@@ -1,2 +1,2 @@
-export * from './articles/get-articles.controller';
-export * from './articles/create-article.controller';
+export * from './products/get-products.controller';
+export * from './products/create-product.controller';

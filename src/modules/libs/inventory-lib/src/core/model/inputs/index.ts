@@ -1,1 +1,1 @@
-export * from './article.input';
+export * from './product.input';
