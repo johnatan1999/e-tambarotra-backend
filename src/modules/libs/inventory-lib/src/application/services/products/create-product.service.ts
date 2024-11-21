@@ -19,7 +19,7 @@ export class CreateProductService {
    * @param article The new products information.
    * @returns The new products.
    */
-  createArticle(article: ProductInput): Promise<CreateProductOutput> {
-    return this.useCase.createArticle(article);
+  createProduct(article: ProductInput): Promise<CreateProductOutput> {
+    return this.useCase.createProduct(article);
   }
 }

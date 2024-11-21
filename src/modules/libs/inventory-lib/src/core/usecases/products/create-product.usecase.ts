@@ -6,7 +6,7 @@ import { CreateProductServiceOutbound } from 'modules/libs/inventory-lib/src/cor
 export class CreateProductUsecase implements CreateProductServiceInbound {
   constructor(private readonly outbound: CreateProductServiceOutbound) {}
 
-  createArticle(article: ProductInput): Promise<ProductEntity> {
-    return this.outbound.createArticle(article);
+  createProduct(article: ProductInput): Promise<ProductEntity> {
+    return this.outbound.createProduct(article);
   }
 }

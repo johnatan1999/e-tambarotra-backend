@@ -1,25 +1,42 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { BusinessDbEntity } from '@/inventory-lib/infrastructure/database/entities/business.db.entity';
 
 @Entity('products')
 export class ProductsDbEntity {
   @PrimaryGeneratedColumn()
-  id: number; // Auto-incremented primary key
+  id: number;
 
   @Column({ type: 'varchar', length: 255 })
-  name: string; // Name of the products
+  name: string;
 
-  @Column({ type: 'varchar', length: 500 })
-  imageUrl: string; // URL of the products image
+  @Column({ type: 'text' })
+  imageUrl: string;
+
+  @Column({ type: 'decimal' })
+  price: number;
+
+  @Column({ type: 'decimal' })
+  purchasePrice: number;
 
   @Column({ type: 'int' })
-  price: number; // Price of the products
+  availableStock: number;
 
-  @Column({ type: 'int', name: 'purchase_price' })
-  purchasePrice: number; // Purchase price of the products
+  @Column({ type: 'int' })
+  reorderThreshold: number;
 
-  @Column({ type: 'int', name: 'available_stock' })
-  availableStock: number; // Stock availability
+  @ManyToOne(() => BusinessDbEntity, (business) => business.products)
+  @JoinColumn({ name: 'business_id' })
+  business: BusinessDbEntity;
 
-  @Column({ type: 'int', name: 'reorder_threshold' })
-  reorderThreshold: number; // Threshold for reordering
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 }

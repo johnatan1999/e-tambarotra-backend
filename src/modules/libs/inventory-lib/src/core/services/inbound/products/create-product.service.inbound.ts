@@ -10,5 +10,5 @@ export interface CreateProductServiceInbound {
    * @param article The information of the products to be created.
    * @returns A promise that resolves to the newly created products.
    */
-  createArticle(article: ProductInput): Promise<ProductEntity>;
+  createProduct(article: ProductInput): Promise<ProductEntity>;
 }

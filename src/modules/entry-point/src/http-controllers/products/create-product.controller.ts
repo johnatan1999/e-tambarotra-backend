@@ -10,7 +10,7 @@ export class CreateProductController {
   ) {}
 
   @Post()
-  createArticle(@Body() article: ProductInput) {
-    return this.service.createArticle(article);
+  createProduct(@Body() article: ProductInput) {
+    return this.service.createProduct(article);
   }
 }
