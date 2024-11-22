@@ -1,7 +1,7 @@
 import { ProductInput } from '@/inventory-lib/core/model/inputs';
 import { ProductEntity } from '@/inventory-lib/core/model/entities';
 
-export const CREATE_ARTICLE_SERVICE_INBOUND = 'CreateProductServiceInbound';
+export const CREATE_PRODUCT_SERVICE_INBOUND = 'CreateProductServiceInbound';
 
 export interface CreateProductServiceInbound {
   /**

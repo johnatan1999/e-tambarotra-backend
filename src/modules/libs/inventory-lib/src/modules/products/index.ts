@@ -12,6 +12,9 @@ import { StockReajustmentDbEntity } from '@/inventory-lib/infrastructure/databas
 import { GetProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/get-product.adapter';
 import { GetProductUseCase } from '@/inventory-lib/core/usecases/products/get-product.usecase';
 import { GetProductService } from '@/inventory-lib/application/services/products/get-product.service';
+import { GetProductByIdService } from '@/inventory-lib/application/services/products/get-product-by-id.service';
+import { GetProductByIdUseCase } from '@/inventory-lib/core/usecases/products';
+import { GetProductByIdAdapter } from '@/inventory-lib/infrastructure/adapter/products';
 
 const entities = [
   ProductsDbEntity,
@@ -20,9 +23,21 @@ const entities = [
   SalesDbEntity,
   StockReajustmentDbEntity,
 ];
-const services = [CreateProductService, GetProductService];
-const usecases = [CreateProductUsecase, GetProductUseCase];
-const adapters = [CreateProductAdapter, GetProductAdapter];
+const services = [
+  CreateProductService,
+  GetProductService,
+  GetProductByIdService,
+];
+const usecases = [
+  CreateProductUsecase,
+  GetProductUseCase,
+  GetProductByIdUseCase,
+];
+const adapters = [
+  CreateProductAdapter,
+  GetProductAdapter,
+  GetProductByIdAdapter,
+];
 
 @Module({
   imports: [TypeOrmModule.forFeature(entities)],

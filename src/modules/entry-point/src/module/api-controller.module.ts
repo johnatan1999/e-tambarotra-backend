@@ -1,11 +1,16 @@
 import { Module } from '@nestjs/common';
-import * as Controllers from '../http-controllers';
+import * as ProductControllers from '../http-controllers/products';
+import * as BusinessControllers from '../http-controllers/business';
 import { InventoryLibModule } from '@/inventory-lib/modules/inventory-lib.module';
 
 const libraries = [InventoryLibModule];
+const controllers = [
+  ...Object.values(ProductControllers),
+  ...Object.values(BusinessControllers),
+];
 
 @Module({
   imports: [...libraries],
-  controllers: Object.values(Controllers),
+  controllers: [...controllers],
 })
 export class ApiControllerModule {}

@@ -8,15 +8,15 @@ import {
 } from '@nestjs/common';
 import { GetProductService } from '@/inventory-lib/application/services/products/get-product.service';
 
-@Controller('/products')
-export class GetProductsController {
+@Controller('/business')
+export class GetBusinessProductsController {
   constructor(
     @Inject(GetProductService)
     private readonly service: GetProductService,
   ) {}
 
-  @Get('/:businessId')
-  async getArticles(@Res() res: any, @Param('businessId') businessId: number) {
+  @Get('/:businessId/products')
+  async getProducts(@Res() res: any, @Param('businessId') businessId: number) {
     const articles = await this.service.getProductsByBusiness(businessId);
     return res.status(HttpStatus.OK).json(articles);
   }

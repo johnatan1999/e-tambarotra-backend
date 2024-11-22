@@ -1,6 +1,6 @@
 import { ProductEntity } from '@/inventory-lib/core/model/entities';
 
-export const GET_ARTICLE_SERVICE_INBOUND = 'GET_ARTICLE_SERVICE_INBOUND';
+export const GET_PRODUCT_SERVICE_INBOUND = 'GET_ARTICLE_SERVICE_INBOUND';
 
 export interface GetProductServiceInbound {
   /**
