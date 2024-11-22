@@ -24,12 +24,20 @@ export class SalesDbEntity {
   @Column({ type: 'int' })
   quantity: number;
 
-  @Column({ type: 'decimal' })
+  @Column({ name: 'total_price', type: 'decimal' })
   totalPrice: number;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'created_at',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'updated_at',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }

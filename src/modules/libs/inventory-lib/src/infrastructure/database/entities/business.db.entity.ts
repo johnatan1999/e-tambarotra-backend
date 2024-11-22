@@ -20,7 +20,7 @@ export class BusinessDbEntity {
   @Column({ type: 'varchar', length: 500, nullable: true })
   address: string;
 
-  @Column({ type: 'varchar', length: 255, nullable: true })
+  @Column({ name: 'email', type: 'varchar', length: 255, nullable: true })
   contactEmail: string;
 
   @Column({ type: 'varchar', length: 15, nullable: true })
@@ -33,9 +33,17 @@ export class BusinessDbEntity {
   @OneToMany(() => ProductsDbEntity, (product) => product.business)
   products: ProductsDbEntity[];
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'created_at',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'updated_at',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }

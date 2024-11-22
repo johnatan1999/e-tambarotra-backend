@@ -15,28 +15,36 @@ export class ProductsDbEntity {
   @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column({ type: 'text' })
+  @Column({ name: 'image_url', type: 'text' })
   imageUrl: string;
 
   @Column({ type: 'decimal' })
   price: number;
 
-  @Column({ type: 'decimal' })
+  @Column({ name: 'purchase_price', type: 'decimal' })
   purchasePrice: number;
 
-  @Column({ type: 'int' })
+  @Column({ name: 'available_stock', type: 'int' })
   availableStock: number;
 
-  @Column({ type: 'int' })
+  @Column({ name: 'reorder_threshold', type: 'int' })
   reorderThreshold: number;
 
   @ManyToOne(() => BusinessDbEntity, (business) => business.products)
   @JoinColumn({ name: 'business_id' })
   business: BusinessDbEntity;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'created_at',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'updated_at',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }

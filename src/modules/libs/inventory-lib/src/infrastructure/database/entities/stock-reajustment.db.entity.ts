@@ -21,15 +21,23 @@ export class StockReajustmentDbEntity {
   @JoinColumn({ name: 'user_id' })
   user: UserDbEntity;
 
-  @Column({ type: 'int' })
+  @Column({ name: 'adjustement_quantity', type: 'int' })
   adjustmentQuantity: number;
 
   @Column({ type: 'varchar', length: 255 })
   reason: string;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'created_at',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   createdAt: Date;
 
-  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
+  @Column({
+    name: 'updated_at',
+    type: 'datetime',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }
