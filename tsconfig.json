@@ -18,7 +18,15 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@/inventory-lib/*": ["modules/libs/inventory-lib/src/*"]
+      "@/inventory-lib/*": [
+        "modules/libs/inventory-lib/src/*"
+      ],
+      "@/sales-lib/*": [
+        "modules/libs/sales-lib/src/*"
+      ],
+      "@/infrastructure-lib/*": [
+        "modules/libs/infrastructure-lib/src/*"
+      ]
     }
   }
 }

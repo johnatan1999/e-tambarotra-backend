@@ -3,12 +3,11 @@ import { CreateProductUsecase } from '@/inventory-lib/core/usecases/products/cre
 import { Module } from '@nestjs/common';
 import { ProductsProviders } from './product.provider';
 import { CreateProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/create-product.adapter';
-import { ProductsDbEntity } from '@/inventory-lib/infrastructure/database/entities';
+import {
+  BusinessDbEntity,
+  ProductsDbEntity,
+} from '@/infrastructure-lib/database/entities';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { BusinessDbEntity } from '@/inventory-lib/infrastructure/database/entities/business.db.entity';
-import { UserDbEntity } from '@/inventory-lib/infrastructure/database/entities/users.db.entity';
-import { SalesDbEntity } from '@/inventory-lib/infrastructure/database/entities/sales.db.entity';
-import { StockReajustmentDbEntity } from '@/inventory-lib/infrastructure/database/entities/stock-reajustment.db.entity';
 import { GetProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/get-product.adapter';
 import { GetProductUseCase } from '@/inventory-lib/core/usecases/products/get-product.usecase';
 import { GetProductService } from '@/inventory-lib/application/services/products/get-product.service';
@@ -16,13 +15,7 @@ import { GetProductByIdService } from '@/inventory-lib/application/services/prod
 import { GetProductByIdUseCase } from '@/inventory-lib/core/usecases/products';
 import { GetProductByIdAdapter } from '@/inventory-lib/infrastructure/adapter/products';
 
-const entities = [
-  ProductsDbEntity,
-  BusinessDbEntity,
-  UserDbEntity,
-  SalesDbEntity,
-  StockReajustmentDbEntity,
-];
+const entities = [ProductsDbEntity, BusinessDbEntity];
 const services = [
   CreateProductService,
   GetProductService,
@@ -41,13 +34,7 @@ const adapters = [
 
 @Module({
   imports: [TypeOrmModule.forFeature(entities)],
-  providers: [
-    ...ProductsProviders,
-    ...entities,
-    ...services,
-    ...usecases,
-    ...adapters,
-  ],
+  providers: [...ProductsProviders, ...services, ...usecases, ...adapters],
   exports: [...services, ...usecases],
 })
 export class ProductsModule {}

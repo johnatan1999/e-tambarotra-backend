@@ -40,8 +40,8 @@ export class OrderDbEntity {
 
   @Column({
     name: 'status',
-    type: 'enum',
-    enum: ['pending', 'completed', 'canceled'],
+    // type: 'enum',
+    // enum: ['pending', 'completed', 'canceled'],
     default: 'pending',
   })
   status: string;
@@ -57,9 +57,9 @@ export class OrderDbEntity {
   })
   items: OrderItemDbEntity[];
 
-  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
+  @CreateDateColumn({ name: 'created_at', type: 'datetime' })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
+  @UpdateDateColumn({ name: 'updated_at', type: 'datetime' })
   updatedAt: Date;
 }

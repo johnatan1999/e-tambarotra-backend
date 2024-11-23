@@ -3,7 +3,7 @@ import { GetProductByIdServiceOutbound } from '@/inventory-lib/core/services/out
 import { ProductEntity } from '@/inventory-lib/core/model/entities';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ProductsDbEntity } from '@/inventory-lib/infrastructure/database/entities';
+import { ProductsDbEntity } from '@/infrastructure-lib/database/entities';
 
 @Injectable()
 export class GetProductByIdAdapter implements GetProductByIdServiceOutbound {

@@ -6,8 +6,8 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { UserDbEntity } from './users.db.entity';
-import { ProductsDbEntity } from './products.db.entity';
+import { UserDbEntity } from '@/inventory-lib/infrastructure/database/entities/users.db.entity';
+import { ProductsDbEntity } from '@/inventory-lib/infrastructure/database/entities/products.db.entity';
 
 @Entity('business')
 export class BusinessDbEntity {

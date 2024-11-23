@@ -5,8 +5,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { ProductsDbEntity } from '@/inventory-lib/infrastructure/database/entities/products.db.entity';
-import { UserDbEntity } from '@/inventory-lib/infrastructure/database/entities/users.db.entity';
+import { ProductsDbEntity } from './products.db.entity';
+import { UserDbEntity } from './users.db.entity';
 
 @Entity('stock_reajustments')
 export class StockReajustmentDbEntity {

@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { BusinessDbEntity } from './business.db.entity';
+import { BusinessDbEntity } from '@/inventory-lib/infrastructure/database/entities/business.db.entity';
 
 @Entity('products')
 export class ProductsDbEntity {
@@ -15,7 +15,7 @@ export class ProductsDbEntity {
   @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column({ name: 'image_url', type: 'text' })
+  @Column({ name: 'image_url',  type: 'text' })
   imageUrl: string;
 
   @Column({ type: 'decimal' })

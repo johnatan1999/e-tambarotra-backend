@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { BusinessDbEntity } from '@/inventory-lib/infrastructure/database/entities/business.db.entity';
+import { BusinessDbEntity } from './business.db.entity';
 
 @Entity('users')
 export class UserDbEntity {
