@@ -1,0 +1,15 @@
+import { {EntityName}Model } from "../../domain/entity/{EntityName}.model";
+import {EntityName}Repository from "../repository/{EntityNameToLower}.repository";
+
+export class {EntityName}Usecase {
+    
+    private _repository: {EntityName}Repository;
+
+    constructor(repository: {EntityName}Repository) {
+        this._repository = repository
+    }
+
+    get(id: string) {
+        return this._repository.get(id);
+    }
+}

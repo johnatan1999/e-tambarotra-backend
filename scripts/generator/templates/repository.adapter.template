@@ -1,0 +1,53 @@
+import { Repository } from "typeorm";
+import { {EntityName}Model } from "../../core/domain/entity/{EntityName}.model";
+import {EntityName}Repository from "../../core/repository/{EntityNameToLower}.repository";
+import { AppDataSource } from "../data-source";
+import { {EntityName} } from "../entity/{EntityName}";
+
+export default class {EntityName}RepositoryAdapter implements {EntityName}Repository {
+
+    repository: Repository<{EntityName}>;
+
+    constructor() {
+        this.repository = AppDataSource.getRepository({EntityName});
+    }
+
+    save(entity: {EntityName}Model): Promise<{EntityName}Model> {
+        return this.repository.save(entity);
+    }
+
+    update(entity: {EntityName}Model): Promise<boolean> {
+        const entity_ = this.repository.findOne({
+            where: {id: entity.id}
+        })
+        if(entity_) {
+            entity_.then((entity) => {
+                return this.repository.save(entity)
+                .then((res) => {
+                    return true;
+                })
+            })
+        } return Promise.resolve(false);
+    }
+
+    delete(entity_id: string): Promise<any> {
+        const entity = this.repository.findOne({
+            where: {id: entity_id}
+        })
+        if(entity) {
+            entity.then((u) => {
+                u.state = -1;
+                return this.repository.save(u)
+                .then((res) => {
+                    return true;
+                })
+            })
+        } return Promise.resolve(false);
+    }
+
+    get(entity_id: string): Promise<{EntityName}Model> {
+        return this.repository.findOne({
+            where: {id: entity_id}
+        })
+    }
+}

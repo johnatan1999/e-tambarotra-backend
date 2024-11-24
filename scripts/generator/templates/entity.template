@@ -1,0 +1,11 @@
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+
+@Entity()
+export class {EntityName} {
+
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
+
+    @Column({default: 0})
+    state: number = 0;
+}

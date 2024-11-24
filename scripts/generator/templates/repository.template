@@ -1,0 +1,8 @@
+import { {EntityName}Model } from "./../domain/entity/{EntityName}.model";
+
+export default interface {EntityName}Repository {
+    save(entity: {EntityName}Model): Promise<{EntityName}Model>;
+    update(entity: {EntityName}Model): Promise<boolean>;
+    delete(id: string): Promise<boolean>;
+    get(id: string): Promise<{EntityName}Model>;
+}

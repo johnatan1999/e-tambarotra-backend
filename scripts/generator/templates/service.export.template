@@ -1,0 +1,4 @@
+
+import { {EntityName}Service } from "../../core/usecase/{AdapterFileName}/{AdapterFileName}.usecase";
+import { {EntityName}RepositoryAdapter } from "../repository/{AdapterFileName}.adapter";
+export const {ServiceName}Service = new {EntityName}Service(new {EntityName}RepositoryAdapter());
