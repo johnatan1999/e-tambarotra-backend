@@ -1,0 +1,7 @@
+import { Provider } from '@nestjs/common';
+
+const ClientProvider: Provider[] = [
+
+];
+
+export default ClientProvider;
