@@ -19,13 +19,13 @@ const entities = [CustomerDbEntity];
 
 const services = [CreateCustomerService, GetCustomersByBusinessService];
 
-const usecases = [CreateCustomerUseCase, GetCustomersByBusinessUseCase];
+const useCases = [CreateCustomerUseCase, GetCustomersByBusinessUseCase];
 
 const adapters = [CreateCustomerAdapter, GetCustomersByBusinessAdapter];
 
 @Module({
   imports: [TypeOrmModule.forFeature(entities)],
-  providers: [...CustomerProvider, ...services, ...usecases, ...adapters],
+  providers: [...CustomerProvider, ...services, ...useCases, ...adapters],
   exports: [...services],
 })
 export class CustomerModule {}

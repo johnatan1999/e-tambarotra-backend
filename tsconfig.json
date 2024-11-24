@@ -26,6 +26,9 @@
       ],
       "@/infrastructure-lib/*": [
         "modules/libs/infrastructure-lib/src/*"
+      ],
+      "@/auth-lib/*": [
+        "modules/libs/auth-lib/src/*"
       ]
     }
   }
