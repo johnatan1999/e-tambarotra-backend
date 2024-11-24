@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { UserDbEntity } from './users.db.entity';
 import { ProductsDbEntity } from './products.db.entity';
+import { CustomerDbEntity } from '@/infrastructure-lib/database/entities/customer.db.entity';
 
 @Entity('business')
 export class BusinessDbEntity {
@@ -32,6 +33,9 @@ export class BusinessDbEntity {
 
   @OneToMany(() => ProductsDbEntity, (product) => product.business)
   products: ProductsDbEntity[];
+
+  @OneToMany(() => CustomerDbEntity, (customer) => customer.business)
+  customers: CustomerDbEntity[];
 
   @Column({
     name: 'created_at',

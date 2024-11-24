@@ -1,5 +1,6 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import {
+  CustomerDbEntity,
   OrderDbEntity,
   OrderItemDbEntity,
   ProductsDbEntity,
@@ -21,6 +22,7 @@ const DbConfig: TypeOrmModuleOptions = {
     SalesDbEntity,
     OrderDbEntity,
     OrderItemDbEntity,
+    CustomerDbEntity,
   ],
   synchronize: true,
 };
