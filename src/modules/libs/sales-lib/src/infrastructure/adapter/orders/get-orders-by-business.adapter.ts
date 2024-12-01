@@ -14,6 +14,19 @@ export class GetOrdersByBusinessAdapter
   ) {}
 
   async getOrdersByBusiness(businessId: number): Promise<OrderDbEntity[]> {
-    return this.repository.find({ where: { business: { id: businessId } } });
+    return this.repository.find({
+      where: { business: { id: businessId } },
+      relations: ['items', 'customer'],
+      select: {
+        id: true,
+        status: true,
+        createdAt: true,
+        updatedAt: true,
+        customer: {
+          id: true,
+          name: true,
+        },
+      },
+    });
   }
 }

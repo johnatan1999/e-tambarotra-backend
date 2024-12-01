@@ -17,33 +17,11 @@ export class OrderDbEntity {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column({ name: 'customer_name', type: 'varchar', length: 255 })
-  customerName: string;
-
-  @Column({
-    name: 'customer_email',
-    type: 'varchar',
-    length: 255,
-    nullable: true,
-  })
-  customerEmail: string;
-
-  @Column({
-    name: 'customer_phone',
-    type: 'varchar',
-    length: 20,
-    nullable: true,
-  })
-  customerPhone: string;
-
   @ManyToOne(() => CustomerDbEntity, (customer) => customer.orders, {
     nullable: false,
   })
   @JoinColumn({ name: 'customer_id' })
   customer: CustomerDbEntity;
-
-  @Column({ name: 'total_price', type: 'decimal', precision: 10, scale: 2 })
-  totalPrice: number;
 
   @Column({
     name: 'status',

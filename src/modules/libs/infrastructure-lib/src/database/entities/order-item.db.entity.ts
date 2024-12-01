@@ -17,7 +17,7 @@ export class OrderItemDbEntity {
   @JoinColumn({ name: 'order_id' })
   order: OrderDbEntity;
 
-  @ManyToOne(() => ProductsDbEntity, { nullable: false })
+  @ManyToOne(() => ProductsDbEntity, { nullable: false, eager: true })
   @JoinColumn({ name: 'product_id' })
   product: ProductsDbEntity;
 
