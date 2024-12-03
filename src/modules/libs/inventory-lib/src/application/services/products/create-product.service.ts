@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import {
   CREATE_PRODUCT_SERVICE_INBOUND,
   CreateProductServiceInbound,
-} from 'modules/libs/inventory-lib/src/core/services/inbound/products';
+} from '@/inventory-lib/core/services/inbounds/products';
 import { ProductInput } from '@/inventory-lib/core/model/inputs';
 import { CreateProductOutput } from '@/inventory-lib/application/models/output';
 

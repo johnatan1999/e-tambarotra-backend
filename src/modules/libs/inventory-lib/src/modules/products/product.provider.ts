@@ -2,14 +2,19 @@ import { Provider } from '@nestjs/common';
 import { CreateProductUsecase } from '@/inventory-lib/core/usecases/products/create-product.usecase';
 import { CreateProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/create-product.adapter';
 import {
+  BULK_INSERT_PRODUCTS_SERVICE_INBOUND,
   CREATE_PRODUCT_SERVICE_INBOUND,
   GET_PRODUCT_BY_ID_SERVICE_INBOUND,
   GET_PRODUCT_SERVICE_INBOUND,
-} from 'modules/libs/inventory-lib/src/core/services/inbound/products';
+} from '@/inventory-lib/core/services/inbounds/products';
 import { GetProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/get-product.adapter';
 import { GetProductUseCase } from '@/inventory-lib/core/usecases/products/get-product.usecase';
 import { GetProductByIdUseCase } from '@/inventory-lib/core/usecases/products';
-import { GetProductByIdAdapter } from '@/inventory-lib/infrastructure/adapter/products';
+import {
+  BulkInsertProductsAdapter,
+  GetProductByIdAdapter,
+} from '@/inventory-lib/infrastructure/adapter/products';
+import { BulkInsertProductsUseCase } from '@/inventory-lib/core/usecases/products/bulk-insert-products.usecase';
 
 export const ProductsProviders: Provider[] = [
   {
@@ -31,6 +36,13 @@ export const ProductsProviders: Provider[] = [
     provide: GET_PRODUCT_BY_ID_SERVICE_INBOUND,
     useFactory: (outbound: GetProductByIdAdapter) => {
       return new GetProductByIdUseCase(outbound);
+    },
+  },
+  {
+    inject: [BulkInsertProductsAdapter],
+    provide: BULK_INSERT_PRODUCTS_SERVICE_INBOUND,
+    useFactory: (outbound: BulkInsertProductsAdapter) => {
+      return new BulkInsertProductsUseCase(outbound);
     },
   },
 ];

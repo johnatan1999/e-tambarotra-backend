@@ -1,7 +1,7 @@
-import { CreateProductServiceInbound } from 'modules/libs/inventory-lib/src/core/services/inbound/products';
+import { CreateProductServiceInbound } from '@/inventory-lib/core/services/inbounds/products';
 import { ProductInput } from '@/inventory-lib/core/model/inputs';
 import { ProductEntity } from '@/inventory-lib/core/model/entities';
-import { CreateProductServiceOutbound } from 'modules/libs/inventory-lib/src/core/services/outbound/products';
+import { CreateProductServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
 
 export class CreateProductUsecase implements CreateProductServiceInbound {
   constructor(private readonly outbound: CreateProductServiceOutbound) {}

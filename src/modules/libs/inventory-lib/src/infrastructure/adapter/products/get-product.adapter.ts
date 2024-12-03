@@ -1,4 +1,4 @@
-import { GetProductServiceOutbound } from '@/inventory-lib/core/services/outbound/products';
+import { GetProductServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
 import { ProductEntity } from '@/inventory-lib/core/model/entities';
 import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
@@ -13,6 +13,9 @@ export class GetProductAdapter implements GetProductServiceOutbound {
   ) {}
 
   getProductsByBusiness(businessId: number): Promise<ProductEntity[]> {
-    return this.repository.find({ where: { business: { id: businessId } } });
+    return this.repository.find({
+      where: { business: { id: businessId } },
+      order: { createdAt: 'DESC' },
+    });
   }
 }

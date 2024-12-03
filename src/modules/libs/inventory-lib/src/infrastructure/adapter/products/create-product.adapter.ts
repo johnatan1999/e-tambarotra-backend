@@ -1,4 +1,4 @@
-import { CreateProductServiceOutbound } from '@/inventory-lib/core/services/outbound/products';
+import { CreateProductServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
 import { ProductInput } from '@/inventory-lib/core/model/inputs';
 import { ProductEntity } from '@/inventory-lib/core/model/entities';
 import { Injectable } from '@nestjs/common';

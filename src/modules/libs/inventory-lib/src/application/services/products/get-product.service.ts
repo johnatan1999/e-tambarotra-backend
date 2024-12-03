@@ -3,7 +3,7 @@ import { GetProductOutput } from '@/inventory-lib/application/models/output/get-
 import {
   GET_PRODUCT_SERVICE_INBOUND,
   GetProductServiceInbound,
-} from '@/inventory-lib/core/services/inbound/products';
+} from '@/inventory-lib/core/services/inbounds/products';
 
 @Injectable()
 export class GetProductService {

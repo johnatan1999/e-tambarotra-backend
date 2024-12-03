@@ -15,7 +15,7 @@ export class ProductsDbEntity {
   @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column({ name: 'image_url', type: 'text' })
+  @Column({ name: 'image_url', type: 'text', nullable: true })
   imageUrl: string;
 
   @Column({ type: 'decimal' })
