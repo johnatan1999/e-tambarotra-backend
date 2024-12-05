@@ -4,6 +4,7 @@ import * as BusinessControllers from '../http-controllers/business';
 import * as OrderControllers from '../http-controllers/orders';
 import * as CustomerControllers from '../http-controllers/customers';
 import * as AuthControllers from '../http-controllers/auth';
+import * as FilesControllers from '../http-controllers/files';
 import { InventoryLibModule } from '@/inventory-lib/modules/inventory-lib.module';
 import { SalesLibModule } from '@/sales-lib/module/sales-lib.module';
 import { AuthLibModule } from '@/auth-lib/modules/auth-lib.module';
@@ -15,6 +16,7 @@ const controllers = [
   ...Object.values(OrderControllers),
   ...Object.values(CustomerControllers),
   ...Object.values(AuthControllers),
+  ...Object.values(FilesControllers),
 ];
 
 @Module({

@@ -6,9 +6,18 @@ import { InventoryLibModule } from '@/inventory-lib/modules/inventory-lib.module
 import { TypeOrmModule } from '@nestjs/typeorm';
 import DbConfig from './config/db.config';
 import { SalesLibModule } from '@/sales-lib/module/sales-lib.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(DbConfig), ApiControllerModule],
+  imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads',
+    }),
+    TypeOrmModule.forRoot(DbConfig),
+    ApiControllerModule,
+  ],
   controllers: [AppController],
   providers: [AppService, InventoryLibModule, SalesLibModule],
 })
