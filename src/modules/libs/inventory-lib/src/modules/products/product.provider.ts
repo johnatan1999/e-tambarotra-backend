@@ -6,17 +6,29 @@ import {
   CREATE_PRODUCT_SERVICE_INBOUND,
   GET_PRODUCT_BY_ID_SERVICE_INBOUND,
   GET_PRODUCT_SERVICE_INBOUND,
+  UPDATE_PRODUCT_SERVICE_INBOUND,
 } from '@/inventory-lib/core/services/inbounds/products';
 import { GetProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/get-product.adapter';
 import { GetProductUseCase } from '@/inventory-lib/core/usecases/products/get-product.usecase';
-import { GetProductByIdUseCase } from '@/inventory-lib/core/usecases/products';
+import {
+  GetProductByIdUseCase,
+  UpdateProductUseCase,
+} from '@/inventory-lib/core/usecases/products';
 import {
   BulkInsertProductsAdapter,
   GetProductByIdAdapter,
+  UpdateProductAdapter,
 } from '@/inventory-lib/infrastructure/adapter/products';
 import { BulkInsertProductsUseCase } from '@/inventory-lib/core/usecases/products/bulk-insert-products.usecase';
 
 export const ProductsProviders: Provider[] = [
+  {
+    inject: [UpdateProductAdapter],
+    provide: UPDATE_PRODUCT_SERVICE_INBOUND,
+    useFactory: (outbound: UpdateProductAdapter) => {
+      return new UpdateProductUseCase(outbound);
+    },
+  },
   {
     inject: [CreateProductAdapter],
     provide: CREATE_PRODUCT_SERVICE_INBOUND,

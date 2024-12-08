@@ -18,27 +18,33 @@ import { GetProductByIdService } from '@/inventory-lib/application/services/prod
 import {
   BulkInsertProductsUseCase,
   GetProductByIdUseCase,
+  UpdateProductUseCase,
 } from '@/inventory-lib/core/usecases/products';
 import {
   BulkInsertProductsAdapter,
   GetProductByIdAdapter,
+  UpdateProductAdapter,
 } from '@/inventory-lib/infrastructure/adapter/products';
+import { UpdateProductService } from '@/inventory-lib/application/services/products/update-product.service';
 
 const entities = [ProductsDbEntity, BusinessDbEntity];
 const services = [
   CreateProductService,
+  UpdateProductService,
   GetProductService,
   GetProductByIdService,
   BulkInsertProductsService,
 ];
 const useCases = [
   CreateProductUsecase,
+  UpdateProductUseCase,
   GetProductUseCase,
   GetProductByIdUseCase,
   BulkInsertProductsUseCase,
 ];
 const adapters = [
   CreateProductAdapter,
+  UpdateProductAdapter,
   GetProductAdapter,
   GetProductByIdAdapter,
   BulkInsertProductsAdapter,
