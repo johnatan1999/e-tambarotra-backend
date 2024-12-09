@@ -27,12 +27,18 @@ export class ProductsDbEntity {
   @Column({ name: 'available_stock', type: 'int' })
   availableStock: number;
 
+  @Column({ name: 'initial_quantity', type: 'int', default: 0 })
+  initialQuantity: number;
+
   @Column({ name: 'reorder_threshold', type: 'int' })
   reorderThreshold: number;
 
   @ManyToOne(() => BusinessDbEntity, (business) => business.products)
   @JoinColumn({ name: 'business_id' })
   business: BusinessDbEntity;
+
+  @Column({ name: 'state', type: 'int', default: 1 })
+  state: number;
 
   @Column({
     name: 'created_at',

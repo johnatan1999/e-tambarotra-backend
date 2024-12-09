@@ -29,6 +29,9 @@
       ],
       "@/auth-lib/*": [
         "modules/libs/auth-lib/src/*"
+      ],
+      "@/dashboard-lib/*": [
+        "modules/libs/dashboard-lib/src/*"
       ]
     }
   }

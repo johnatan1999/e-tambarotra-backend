@@ -6,3 +6,4 @@ export * from './sales.db.entity';
 export * from './order.db.entity';
 export * from './order-item.db.entity';
 export * from './customer.db.entity';
+export * from './stock-replenishment.db.entity';
