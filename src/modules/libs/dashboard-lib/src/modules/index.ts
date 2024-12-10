@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import {
+  GetLatestProductsAdapter,
   GetSalesStatAdapter,
   GetTotalBudgetAdapter,
   GetTotalCustomersAdapter,
@@ -8,10 +9,12 @@ import {
 } from '@/dashboard-lib/infrastructure/adapters';
 import {
   GetBasicStatOverviewUseCase,
+  GetLatestProductsUseCase,
   GetSalesStatUseCase,
 } from '@/dashboard-lib/core/usecases';
 import {
   GetBasicStatOverviewService,
+  GetLatestProductsService,
   GetSalesStatService,
 } from '@/dashboard-lib/application/services';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -28,9 +31,18 @@ const adapters = [
   GetTotalExpensesAdapter,
   GetTotalCustomersAdapter,
   GetSalesStatAdapter,
+  GetLatestProductsAdapter,
 ];
-const useCases = [GetBasicStatOverviewUseCase, GetSalesStatUseCase];
-const services = [GetBasicStatOverviewService, GetSalesStatService];
+const useCases = [
+  GetBasicStatOverviewUseCase,
+  GetSalesStatUseCase,
+  GetLatestProductsUseCase,
+];
+const services = [
+  GetBasicStatOverviewService,
+  GetSalesStatService,
+  GetLatestProductsService,
+];
 
 @Module({
   imports: [TypeOrmModule.forFeature(entities)],
