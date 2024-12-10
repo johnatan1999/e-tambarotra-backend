@@ -21,7 +21,7 @@ export class GetLatestProductsController {
   async getLatestProducts(
     @Res() res: any,
     @Param('businessId') businessId: number,
-    @Query('limit') limit: number,
+    @Query('limit') limit?: number,
   ): Promise<ProductEntity[]> {
     const result = await this.service.getLatestProducts(businessId, limit);
     return res.status(HttpStatus.OK).json(result);

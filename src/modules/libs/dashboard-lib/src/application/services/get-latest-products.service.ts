@@ -20,7 +20,7 @@ export class GetLatestProductsService {
    */
   async getLatestProducts(
     businessId: number,
-    limit: number,
+    limit?: number,
   ): Promise<ProductEntity[]> {
     return this.inbound.getLatestProducts(businessId, limit);
   }

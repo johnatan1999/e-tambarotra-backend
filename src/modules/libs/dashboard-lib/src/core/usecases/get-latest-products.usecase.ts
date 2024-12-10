@@ -5,12 +5,17 @@ import { ProductEntity } from '@/inventory-lib/core/model/entities';
 export class GetLatestProductsUseCase
   implements GetLatestProductsServiceInbound
 {
+  public static readonly DEFAULT_LIMIT = 10;
+
   constructor(private readonly outbound: GetLatestProductsServiceOutbound) {}
 
   async getLatestProducts(
     businessId: number,
-    limit: number,
+    limit?: number,
   ): Promise<ProductEntity[]> {
-    return this.outbound.getLatestProducts(businessId, limit);
+    return this.outbound.getLatestProducts(
+      businessId,
+      limit ?? GetLatestProductsUseCase.DEFAULT_LIMIT,
+    );
   }
 }

@@ -18,6 +18,6 @@ export interface GetLatestProductsServiceInbound {
    */
   getLatestProducts(
     businessId: number,
-    limit: number,
+    limit?: number,
   ): Promise<ProductEntity[]>;
 }
