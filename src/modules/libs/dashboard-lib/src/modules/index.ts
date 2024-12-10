@@ -1,13 +1,26 @@
 import { Module } from '@nestjs/common';
-import { GetTotalBudgetAdapter } from '@/dashboard-lib/infrastructure/adapters';
+import {
+  GetTotalBudgetAdapter,
+  GetTotalCustomersAdapter,
+  GetTotalExpensesAdapter,
+  GetTotalProfitAdapter,
+} from '@/dashboard-lib/infrastructure/adapters';
 import { GetBasicStatOverviewUseCase } from '@/dashboard-lib/core/usecases';
 import { GetBasicStatOverviewService } from '@/dashboard-lib/application/services';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dashboardProviders } from '@/dashboard-lib/modules/dashboard.provider';
-import { ProductsDbEntity } from '@/infrastructure-lib/database/entities';
+import {
+  CustomerDbEntity,
+  ProductsDbEntity,
+} from '@/infrastructure-lib/database/entities';
 
-const entities = [ProductsDbEntity];
-const adapters = [GetTotalBudgetAdapter];
+const entities = [ProductsDbEntity, CustomerDbEntity];
+const adapters = [
+  GetTotalBudgetAdapter,
+  GetTotalProfitAdapter,
+  GetTotalExpensesAdapter,
+  GetTotalCustomersAdapter,
+];
 const useCases = [GetBasicStatOverviewUseCase];
 const services = [GetBasicStatOverviewService];
 
