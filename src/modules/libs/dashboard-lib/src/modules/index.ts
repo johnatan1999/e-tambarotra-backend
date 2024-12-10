@@ -1,12 +1,19 @@
 import { Module } from '@nestjs/common';
 import {
+  GetSalesStatAdapter,
   GetTotalBudgetAdapter,
   GetTotalCustomersAdapter,
   GetTotalExpensesAdapter,
   GetTotalProfitAdapter,
 } from '@/dashboard-lib/infrastructure/adapters';
-import { GetBasicStatOverviewUseCase } from '@/dashboard-lib/core/usecases';
-import { GetBasicStatOverviewService } from '@/dashboard-lib/application/services';
+import {
+  GetBasicStatOverviewUseCase,
+  GetSalesStatUseCase,
+} from '@/dashboard-lib/core/usecases';
+import {
+  GetBasicStatOverviewService,
+  GetSalesStatService,
+} from '@/dashboard-lib/application/services';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dashboardProviders } from '@/dashboard-lib/modules/dashboard.provider';
 import {
@@ -20,9 +27,10 @@ const adapters = [
   GetTotalProfitAdapter,
   GetTotalExpensesAdapter,
   GetTotalCustomersAdapter,
+  GetSalesStatAdapter,
 ];
-const useCases = [GetBasicStatOverviewUseCase];
-const services = [GetBasicStatOverviewService];
+const useCases = [GetBasicStatOverviewUseCase, GetSalesStatUseCase];
+const services = [GetBasicStatOverviewService, GetSalesStatService];
 
 @Module({
   imports: [TypeOrmModule.forFeature(entities)],

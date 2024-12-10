@@ -1,1 +1,4 @@
-export type SalesStatEntity = {};
+export type SalesStatEntity = {
+  date: string;
+  total: number;
+};
