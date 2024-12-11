@@ -1,1 +1,1 @@
-export class OrderEntity {}
+export type OrderEntity = {};
