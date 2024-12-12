@@ -7,22 +7,45 @@ import {
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {
   CreateOrderService,
+  GetOrderByIdService,
   GetOrdersByBusinessService,
+  UpdateOrderService,
 } from '@/sales-lib/application/services/orders';
 import {
   CreateOrderUsecase,
+  GetOrderByIdUseCase,
   GetOrdersByBusinessUseCase,
+  UpdateOrderUseCase,
 } from '@/sales-lib/core/usecases/orders';
 import { CreateOrderAdapter } from '@/sales-lib/infrastructure/adapter/orders/create-order.adapter';
-import { GetOrdersByBusinessAdapter } from '@/sales-lib/infrastructure/adapter/orders';
+import {
+  GetOrderByIdAdapter,
+  GetOrdersByBusinessAdapter,
+  UpdateOrderAdapter,
+} from '@/sales-lib/infrastructure/adapter/orders';
 
 const entities = [OrderDbEntity, OrderItemDbEntity];
 
-const services = [CreateOrderService, GetOrdersByBusinessService];
+const services = [
+  CreateOrderService,
+  GetOrdersByBusinessService,
+  GetOrderByIdService,
+  UpdateOrderService,
+];
 
-const usecases = [CreateOrderUsecase, GetOrdersByBusinessUseCase];
+const usecases = [
+  CreateOrderUsecase,
+  GetOrdersByBusinessUseCase,
+  GetOrderByIdUseCase,
+  UpdateOrderUseCase,
+];
 
-const adapters = [CreateOrderAdapter, GetOrdersByBusinessAdapter];
+const adapters = [
+  CreateOrderAdapter,
+  GetOrdersByBusinessAdapter,
+  GetOrderByIdAdapter,
+  UpdateOrderAdapter,
+];
 
 @Module({
   imports: [TypeOrmModule.forFeature(entities)],
