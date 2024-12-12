@@ -27,6 +27,7 @@ export class GetOrdersByBusinessAdapter
           name: true,
         },
       },
+      order: { createdAt: 'DESC' },
     });
   }
 }
