@@ -1,1 +1,5 @@
-export type BestSellerEntity = {};
+export type BestSellerEntity = {
+  productId: string;
+  productName: string;
+  totalSold: number;
+};

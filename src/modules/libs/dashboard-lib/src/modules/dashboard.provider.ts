@@ -1,5 +1,6 @@
 import { Provider } from '@nestjs/common';
 import {
+  GetBestSellingProductsAdapter,
   GetLatestOrdersAdapter,
   GetLatestProductsAdapter,
   GetSalesStatAdapter,
@@ -10,12 +11,14 @@ import {
 } from '@/dashboard-lib/infrastructure/adapters';
 import {
   GET_BASIC_STAT_OVERVIEW_SERVICE_INBOUND,
+  GET_BEST_SELLING_PRODUCTS_SERVICE_INBOUND,
   GET_LATEST_ORDERS_SERVICE_INBOUND,
   GET_LATEST_PRODUCTS_SERVICE_INBOUND,
   GET_SALES_STAT_SERVICE_INBOUND,
 } from '@/dashboard-lib/core/services/inbounds';
 import {
   GetBasicStatOverviewUseCase,
+  GetBestSellingProductsUseCase,
   GetLatestOrdersUseCase,
   GetLatestProductsUseCase,
   GetSalesStatUseCase,
@@ -63,6 +66,13 @@ export const dashboardProviders: Provider[] = [
     provide: GET_LATEST_ORDERS_SERVICE_INBOUND,
     useFactory: (latestOrdersService: GetLatestOrdersAdapter) => {
       return new GetLatestOrdersUseCase(latestOrdersService);
+    },
+  },
+  {
+    inject: [GetBestSellingProductsAdapter],
+    provide: GET_BEST_SELLING_PRODUCTS_SERVICE_INBOUND,
+    useFactory: (bestSellingProductsAdapter: GetBestSellingProductsAdapter) => {
+      return new GetBestSellingProductsUseCase(bestSellingProductsAdapter);
     },
   },
 ];

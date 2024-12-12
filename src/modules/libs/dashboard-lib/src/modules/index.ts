@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import {
+  GetBestSellingProductsAdapter,
   GetLatestOrdersAdapter,
   GetLatestProductsAdapter,
   GetSalesStatAdapter,
@@ -10,12 +11,14 @@ import {
 } from '@/dashboard-lib/infrastructure/adapters';
 import {
   GetBasicStatOverviewUseCase,
+  GetBestSellingProductsUseCase,
   GetLatestOrdersUseCase,
   GetLatestProductsUseCase,
   GetSalesStatUseCase,
 } from '@/dashboard-lib/core/usecases';
 import {
   GetBasicStatOverviewService,
+  GetBestSellingProductsService,
   GetLatestOrdersService,
   GetLatestProductsService,
   GetSalesStatService,
@@ -37,18 +40,21 @@ const adapters = [
   GetSalesStatAdapter,
   GetLatestProductsAdapter,
   GetLatestOrdersAdapter,
+  GetBestSellingProductsAdapter,
 ];
 const useCases = [
   GetBasicStatOverviewUseCase,
   GetSalesStatUseCase,
   GetLatestProductsUseCase,
   GetLatestOrdersUseCase,
+  GetBestSellingProductsUseCase,
 ];
 const services = [
   GetBasicStatOverviewService,
   GetSalesStatService,
   GetLatestProductsService,
   GetLatestOrdersService,
+  GetBestSellingProductsService,
 ];
 
 @Module({

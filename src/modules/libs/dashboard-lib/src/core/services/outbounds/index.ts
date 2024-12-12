@@ -6,3 +6,4 @@ export * from './get-sales-stat.service.outbound';
 export * from './get-total-customers.service.outbound';
 export * from './get-total-expenses.service.outbound';
 export * from './get-total-profit.service.outbound';
+export * from './get-best-selling-products.service.outbound';
