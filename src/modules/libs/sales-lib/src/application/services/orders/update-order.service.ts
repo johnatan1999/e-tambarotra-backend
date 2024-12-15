@@ -3,7 +3,7 @@ import {
   UpdateOrderServiceInbound,
 } from '@/sales-lib/core/services/inbounds/orders';
 import { OrderEntity } from '@/sales-lib/core/models/entities';
-import { OrderInput } from '@/sales-lib/core/models/inputs';
+import { OrderUpdateInput } from '@/sales-lib/core/models/inputs';
 import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -13,7 +13,10 @@ export class UpdateOrderService {
     private readonly updateOrderUseCase: UpdateOrderServiceInbound,
   ) {}
 
-  async updateOrder(orderId: string, input: OrderInput): Promise<OrderEntity> {
+  async updateOrder(
+    orderId: string,
+    input: OrderUpdateInput,
+  ): Promise<OrderEntity> {
     return this.updateOrderUseCase.updateOrder(orderId, input);
   }
 }

@@ -1,6 +1,6 @@
 import { Body, Controller, Inject, Param, Put } from '@nestjs/common';
 import { UpdateOrderService } from '@/sales-lib/application/services/orders';
-import { OrderInput } from '@/sales-lib/core/models/inputs';
+import { OrderUpdateInput } from '@/sales-lib/core/models/inputs';
 import { OrderEntity } from '@/sales-lib/core/models/entities';
 
 /**
@@ -28,7 +28,7 @@ export class UpdateOrderController {
   @Put(':id')
   async updateOrder(
     @Param('id') id: string,
-    @Body() orderDetails: OrderInput,
+    @Body() orderDetails: OrderUpdateInput,
   ): Promise<OrderEntity> {
     return this.service.updateOrder(id, orderDetails);
   }
