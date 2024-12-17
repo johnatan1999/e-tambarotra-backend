@@ -32,6 +32,9 @@
       ],
       "@/dashboard-lib/*": [
         "modules/libs/dashboard-lib/src/*"
+      ],
+      "@/core-lib/*": [
+        "modules/libs/core-lib/src/*"
       ]
     }
   }

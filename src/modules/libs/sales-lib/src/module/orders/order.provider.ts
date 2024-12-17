@@ -1,7 +1,7 @@
 import { Provider } from '@nestjs/common';
 import { CreateOrderAdapter } from '@/sales-lib/infrastructure/adapter/orders/create-order.adapter';
 import {
-  CreateOrderUsecase,
+  CreateOrderUseCase,
   GetOrderByIdUseCase,
   GetOrdersByBusinessUseCase,
   UpdateOrderUseCase,
@@ -17,6 +17,8 @@ import {
   GET_ORDERS_BY_BUSINESS_SERVICE_INBOUND,
   UPDATE_ORDER_SERVICE_INBOUND,
 } from '@/sales-lib/core/services/inbounds/orders';
+import { ProductQuantityValidatorService } from '@/core-lib/infrastructure/adapter/product';
+import { UpdateProductStockAdapter } from '@/sales-lib/infrastructure/adapter/products';
 
 const OrderProvider: Provider[] = [
   {
@@ -27,10 +29,18 @@ const OrderProvider: Provider[] = [
     },
   },
   {
-    inject: [CreateOrderAdapter],
+    inject: [
+      CreateOrderAdapter,
+      UpdateProductStockAdapter,
+      ProductQuantityValidatorService,
+    ],
     provide: CREATE_ORDER_SERVICE_INBOUND,
-    useFactory: (outbound: CreateOrderAdapter) => {
-      return new CreateOrderUsecase(outbound);
+    useFactory: (
+      outbound: CreateOrderAdapter,
+      stockAdapter: UpdateProductStockAdapter,
+      quantityValidator: ProductQuantityValidatorService,
+    ) => {
+      return new CreateOrderUseCase(outbound, stockAdapter, quantityValidator);
     },
   },
   {

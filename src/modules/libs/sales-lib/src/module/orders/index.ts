@@ -3,6 +3,7 @@ import OrderProvider from '@/sales-lib/module/orders/order.provider';
 import {
   OrderDbEntity,
   OrderItemDbEntity,
+  ProductsDbEntity,
 } from '@/infrastructure-lib/database/entities';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {
@@ -12,7 +13,7 @@ import {
   UpdateOrderService,
 } from '@/sales-lib/application/services/orders';
 import {
-  CreateOrderUsecase,
+  CreateOrderUseCase,
   GetOrderByIdUseCase,
   GetOrdersByBusinessUseCase,
   UpdateOrderUseCase,
@@ -23,8 +24,13 @@ import {
   GetOrdersByBusinessAdapter,
   UpdateOrderAdapter,
 } from '@/sales-lib/infrastructure/adapter/orders';
+import {
+  ProductQuantityValidatorService,
+  ProductValidatorService,
+} from '@/core-lib/infrastructure/adapter/product';
+import { UpdateProductStockAdapter } from '@/sales-lib/infrastructure/adapter/products';
 
-const entities = [OrderDbEntity, OrderItemDbEntity];
+const entities = [ProductsDbEntity, OrderDbEntity, OrderItemDbEntity];
 
 const services = [
   CreateOrderService,
@@ -33,8 +39,8 @@ const services = [
   UpdateOrderService,
 ];
 
-const usecases = [
-  CreateOrderUsecase,
+const useCases = [
+  CreateOrderUseCase,
   GetOrdersByBusinessUseCase,
   GetOrderByIdUseCase,
   UpdateOrderUseCase,
@@ -45,11 +51,20 @@ const adapters = [
   GetOrdersByBusinessAdapter,
   GetOrderByIdAdapter,
   UpdateOrderAdapter,
+  UpdateProductStockAdapter,
 ];
+
+const validators = [ProductValidatorService, ProductQuantityValidatorService];
 
 @Module({
   imports: [TypeOrmModule.forFeature(entities)],
-  providers: [...OrderProvider, ...services, ...usecases, ...adapters],
+  providers: [
+    ...OrderProvider,
+    ...services,
+    ...useCases,
+    ...adapters,
+    ...validators,
+  ],
   exports: [...services],
 })
 export class OrderModule {}

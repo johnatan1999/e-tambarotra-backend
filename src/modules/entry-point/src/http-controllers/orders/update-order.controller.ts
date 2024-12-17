@@ -2,6 +2,7 @@ import { Body, Controller, Inject, Param, Put } from '@nestjs/common';
 import { UpdateOrderService } from '@/sales-lib/application/services/orders';
 import { OrderUpdateInput } from '@/sales-lib/core/models/inputs';
 import { OrderEntity } from '@/sales-lib/core/models/entities';
+import { ApiExceptionHandler } from '../../decorators';
 
 /**
  * Controller for updating an order.
@@ -26,10 +27,11 @@ export class UpdateOrderController {
    * @returns {Promise<void>}
    */
   @Put(':id')
+  @ApiExceptionHandler()
   async updateOrder(
     @Param('id') id: string,
     @Body() orderDetails: OrderUpdateInput,
   ): Promise<OrderEntity> {
-    return this.service.updateOrder(id, orderDetails);
+    return await this.service.updateOrder(id, orderDetails);
   }
 }

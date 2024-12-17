@@ -14,7 +14,7 @@ import { BusinessDbEntity } from '@/infrastructure-lib/database/entities/busines
 @Entity('customers')
 export class CustomerDbEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({ type: 'varchar', length: 255 })
   name: string;
