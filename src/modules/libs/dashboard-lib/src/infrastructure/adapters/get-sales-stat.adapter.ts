@@ -18,21 +18,15 @@ export class GetSalesStatAdapter implements GetSalesStatServiceOutbound {
     endDate: Date,
   ): Promise<SalesStatEntity[]> {
     const query = `
-        select DATE(created_at)             AS grouped_date,
+        select DATE(order_date)             AS grouped_date,
                sum((quantity * unit_price)) AS total_price
         from orders o
                  join order_items oi on o.id = oi.order_id
         WHERE o.business_id = $1
-          AND DATE(created_at) BETWEEN $2 AND $3
-        GROUP BY DATE(created_at)
+          AND DATE(o.order_date) BETWEEN $2 AND $3
+        GROUP BY DATE(order_date)
         ORDER BY grouped_date
     `;
-    // console.log(
-    //   query
-    //     .replace('$1', businessId.toString())
-    //     .replace('$2', startDate.toISOString())
-    //     .replace('$3', endDate.toISOString()),
-    // );
 
     const result = await this.salesRepository.query(query, [
       businessId,
