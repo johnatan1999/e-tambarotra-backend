@@ -42,6 +42,9 @@ export class OrderDbEntity {
   })
   items: OrderItemDbEntity[];
 
+  @CreateDateColumn({ name: 'order_date', type: 'datetime', nullable: true })
+  orderDate: Date;
+
   @CreateDateColumn({ name: 'created_at', type: 'datetime' })
   createdAt: Date;
 
