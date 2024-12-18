@@ -13,6 +13,7 @@ export class RegistrationController {
   @Post('register')
   @ApiExceptionHandler()
   async register(@Body() input: RegistrationInput) {
-    return this.service.register(input);
+    const user = await this.service.register(input);
+    return { success: !!user };
   }
 }

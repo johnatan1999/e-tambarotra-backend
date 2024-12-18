@@ -1,5 +1,8 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { ProductOutOfStockException } from '@/core-lib/core/exceptions';
+import {
+  AuthException,
+  ProductOutOfStockException,
+} from '@/core-lib/core/exceptions';
 
 type ExceptionResponse = {
   status: number;
@@ -42,6 +45,8 @@ export function ApiExceptionHandler() {
         let statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
         if (error instanceof ProductOutOfStockException) {
           statusCode = HttpStatus.CONFLICT;
+        } else if (error instanceof AuthException) {
+          statusCode = HttpStatus.UNAUTHORIZED;
         }
 
         // Handle unknown exceptions

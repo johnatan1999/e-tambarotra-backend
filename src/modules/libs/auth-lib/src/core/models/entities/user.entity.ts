@@ -5,8 +5,9 @@ export class UserEntity {
   lastName: string;
   role: string;
   password: string;
+  username: string;
 }
 
-export type UserTokenData = Omit<UserEntity, 'password'> & {
+export type UserTokenData = Omit<UserEntity, 'password' | 'username'> & {
   businesses: number[];
 };

@@ -7,13 +7,21 @@ import { Repository } from 'typeorm';
 export class UserLoginAdapter implements LoginServiceOutbound {
   constructor(
     @InjectRepository(UserDbEntity)
-    private readonly repository: Repository<UserEntity>,
+    private readonly repository: Repository<UserDbEntity>,
   ) {}
 
   getUserByEmail(email: string): Promise<UserEntity> {
     return this.repository.findOne({
       where: { email },
-      select: ['email', 'password', 'id', 'firstName', 'lastName', 'role'],
+      select: [
+        'email',
+        'password',
+        'id',
+        'firstName',
+        'lastName',
+        'role',
+        'username',
+      ],
     });
   }
 }

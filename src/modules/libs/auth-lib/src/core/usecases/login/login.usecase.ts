@@ -6,7 +6,7 @@ import {
   UserBusinessServiceOutbound,
 } from '@/auth-lib/core/services/outbounds/login';
 import { PasswordHashServiceOutbound } from '@/auth-lib/core/services/outbounds/password-hash.service.outbound';
-import { CoreException } from '@/core-lib/core/exceptions';
+import { AuthException } from '@/core-lib/core/exceptions';
 import { TokenGeneratorServiceOutbound } from '@/auth-lib/core/services/outbounds';
 
 export class LoginUseCase implements LoginServiceInbound {
@@ -20,14 +20,14 @@ export class LoginUseCase implements LoginServiceInbound {
   async login(input: LoginInput): Promise<LoginOutput> {
     const user = await this.outbound.getUserByEmail(input.email);
     if (!user) {
-      throw new CoreException('User not found');
+      throw new AuthException('User not found');
     }
     const isPasswordValid = await this.passwordService.comparePassword(
       input.password,
       user.password,
     );
     if (!isPasswordValid) {
-      throw new CoreException('Invalid password');
+      throw new AuthException('Invalid password');
     }
     const businesses = await this.businessService.getUserBusinesses(user.id);
     const token = await this.tokenGenerator.generateToken({
@@ -39,6 +39,11 @@ export class LoginUseCase implements LoginServiceInbound {
       businesses,
     });
     return {
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username,
+      role: user.role,
       token,
     };
   }
