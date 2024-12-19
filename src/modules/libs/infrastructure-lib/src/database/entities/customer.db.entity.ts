@@ -16,8 +16,11 @@ export class CustomerDbEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 255 })
-  name: string;
+  @Column({ name: 'first_name', type: 'varchar', length: 255 })
+  firstName: string;
+
+  @Column({ name: 'last_name', type: 'varchar', length: 255, default: '' })
+  lastName: string;
 
   @Column({ type: 'varchar', length: 255, nullable: true })
   email: string;
@@ -28,12 +31,15 @@ export class CustomerDbEntity {
   @Column({ type: 'text', nullable: true })
   address: string;
 
+  @Column({ name: 'additional_information', type: 'text', nullable: true })
+  additionalInformation: string;
+
   @Column({
     // type: 'enum',
     // enum: ['individual', 'enterprise'],
     name: 'customer_type',
   })
-  customerType: 'individual' | 'enterprise';
+  type: 'individual' | 'enterprise';
 
   @Column({
     type: 'varchar',

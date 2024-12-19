@@ -24,7 +24,7 @@ export class GetOrdersByBusinessAdapter
         updatedAt: true,
         customer: {
           id: true,
-          name: true,
+          firstName: true,
         },
       },
       order: { createdAt: 'DESC' },

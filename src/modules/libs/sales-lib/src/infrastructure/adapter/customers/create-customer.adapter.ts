@@ -17,7 +17,15 @@ export class CreateCustomerAdapter implements CreateCustomerServiceOutbound {
     customerDetails: CustomerInput,
   ): Promise<CustomerEntity> {
     const entity = this.repository.create({
-      ...customerDetails,
+      firstName: customerDetails.firstName,
+      lastName: customerDetails.lastName,
+      email: customerDetails.email,
+      phone: customerDetails.phone,
+      address: customerDetails.address,
+      business: { id: customerDetails.businessId },
+      additionalInformation: customerDetails.description,
+      type: customerDetails.type,
+      customerBusinessName: customerDetails.businessName,
     });
     return this.repository.save(entity);
   }
