@@ -16,12 +16,15 @@ import {
 } from '@/auth-lib/infrastructure/adapter/login';
 import { LoginService } from '@/auth-lib/application/services/login';
 import { TokenGeneratorAdapter } from '@/auth-lib/infrastructure/adapter';
+import { JwtService } from '@nestjs/jwt';
+import { AccountAuthUseCase } from '@/auth-lib/core/usecases/account-auth.usecase';
+import { AccountAuthService } from '@/auth-lib/application/services/account-auth.service';
 
 const entities = [UserDbEntity, BusinessDbEntity];
 
-const services = [RegistrationService, LoginService];
+const services = [RegistrationService, LoginService, AccountAuthService];
 
-const useCases = [RegistrationUseCase, LoginUseCase];
+const useCases = [RegistrationUseCase, LoginUseCase, AccountAuthUseCase];
 
 const adapters = [
   RegistrationAdapter,
@@ -29,6 +32,7 @@ const adapters = [
   UserBusinessAdapter,
   PasswordHashAdapter,
   TokenGeneratorAdapter,
+  JwtService,
 ];
 
 @Module({

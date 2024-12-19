@@ -10,12 +10,14 @@ import { InventoryLibModule } from '@/inventory-lib/modules/inventory-lib.module
 import { SalesLibModule } from '@/sales-lib/module/sales-lib.module';
 import { AuthLibModule } from '@/auth-lib/modules/auth-lib.module';
 import { DashboardLibModule } from '@/dashboard-lib/modules/dashboard-lib.module';
+import { UsersLibModule } from '@/users-lib/module/users-lib.module';
 
 const libraries = [
   InventoryLibModule,
   SalesLibModule,
   AuthLibModule,
   DashboardLibModule,
+  UsersLibModule,
 ];
 const controllers = [
   ...Object.values(ProductControllers),
@@ -29,6 +31,7 @@ const controllers = [
 
 @Module({
   imports: [...libraries],
+  exports: [AuthLibModule],
   controllers: [...controllers],
 })
 export class ApiControllerModule {}

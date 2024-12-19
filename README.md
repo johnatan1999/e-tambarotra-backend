@@ -85,6 +85,12 @@ managing infrastructure.
 $ pnpm run gen:services inventory-lib products bulk-insert-products
 ```
 
+### Entities
+
+```bash
+$ pnpm run gen:entity users-lib business
+```
+
 ## Resources
 
 Check out a few resources that may come in handy when working with NestJS:

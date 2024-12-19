@@ -35,6 +35,9 @@
       ],
       "@/core-lib/*": [
         "modules/libs/core-lib/src/*"
+      ],
+      "@/users-lib/*": [
+        "modules/libs/users-lib/src/*"
       ]
     }
   }

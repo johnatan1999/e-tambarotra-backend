@@ -1,5 +1,8 @@
 import { UserTokenData } from '@/auth-lib/core/models/entities/user.entity';
 
+export const TOKEN_GENERATOR_SERVICE_OUTBOUND =
+  'TOKEN_GENERATOR_SERVICE_OUTBOUND';
+
 export interface TokenGeneratorServiceOutbound {
   /**
    * Generates a token for the given user.
