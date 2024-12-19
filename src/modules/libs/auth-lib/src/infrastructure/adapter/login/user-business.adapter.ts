@@ -3,6 +3,7 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserBusinessServiceOutbound } from '@/auth-lib/core/services/outbounds/login';
 import { BusinessDbEntity } from '@/infrastructure-lib/database/entities';
+import { BusinessEntity } from '@/auth-lib/core/models/entities';
 
 @Injectable()
 export class UserBusinessAdapter implements UserBusinessServiceOutbound {
@@ -11,12 +12,10 @@ export class UserBusinessAdapter implements UserBusinessServiceOutbound {
     private readonly repository: Repository<BusinessDbEntity>,
   ) {}
 
-  async getUserBusinesses(userId: number): Promise<number[]> {
-    const userBusinesses = await this.repository.find({
+  async getUserBusinesses(userId: number): Promise<BusinessEntity[]> {
+    return await this.repository.find({
       where: { owner: { id: userId } },
-      select: ['id'],
+      select: ['id', 'name'],
     });
-
-    return userBusinesses.map((userBusiness) => userBusiness.id);
   }
 }

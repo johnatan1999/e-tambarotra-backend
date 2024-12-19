@@ -1,3 +1,5 @@
+import { BusinessEntity } from '@/auth-lib/core/models/entities/business.entity';
+
 export class UserEntity {
   id: number;
   email: string;
@@ -9,5 +11,5 @@ export class UserEntity {
 }
 
 export type UserTokenData = Omit<UserEntity, 'password' | 'username'> & {
-  businesses: number[];
+  businesses: BusinessEntity[];
 };

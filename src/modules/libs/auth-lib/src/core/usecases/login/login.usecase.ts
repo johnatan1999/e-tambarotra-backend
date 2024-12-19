@@ -44,6 +44,7 @@ export class LoginUseCase implements LoginServiceInbound {
       lastName: user.lastName,
       username: user.username,
       role: user.role,
+      businesses,
       token,
     };
   }
