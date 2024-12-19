@@ -2,7 +2,7 @@ import {
   BulkInsertProductsService,
   CreateProductService,
 } from 'modules/libs/inventory-lib/src/application/services/products';
-import { CreateProductUsecase } from '@/inventory-lib/core/usecases/products/create-product.usecase';
+import { CreateProductUseCase } from '@/inventory-lib/core/usecases/products/create-product-use.case';
 import { Module } from '@nestjs/common';
 import { ProductsProviders } from './product.provider';
 import { CreateProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/create-product.adapter';
@@ -36,7 +36,7 @@ const services = [
   BulkInsertProductsService,
 ];
 const useCases = [
-  CreateProductUsecase,
+  CreateProductUseCase,
   UpdateProductUseCase,
   GetProductUseCase,
   GetProductByIdUseCase,

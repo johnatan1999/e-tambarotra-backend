@@ -8,6 +8,11 @@ export class BulkInsertProductsUseCase
   constructor(private readonly outbound: BulkInsertProductsServiceOutbound) {}
 
   async createProducts(products: ProductInput[]): Promise<void> {
-    return this.outbound.createProducts(products);
+    return this.outbound.createProducts(
+      products.map((p) => ({
+        ...p,
+        initialQuantity: p.initialQuantity || p.availableStock,
+      })),
+    );
   }
 }

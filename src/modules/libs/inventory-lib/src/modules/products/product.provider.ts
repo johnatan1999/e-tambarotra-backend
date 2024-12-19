@@ -1,5 +1,5 @@
 import { Provider } from '@nestjs/common';
-import { CreateProductUsecase } from '@/inventory-lib/core/usecases/products/create-product.usecase';
+import { CreateProductUseCase } from '@/inventory-lib/core/usecases/products/create-product-use.case';
 import { CreateProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/create-product.adapter';
 import {
   BULK_INSERT_PRODUCTS_SERVICE_INBOUND,
@@ -33,7 +33,7 @@ export const ProductsProviders: Provider[] = [
     inject: [CreateProductAdapter],
     provide: CREATE_PRODUCT_SERVICE_INBOUND,
     useFactory: (outbound: CreateProductAdapter) => {
-      return new CreateProductUsecase(outbound);
+      return new CreateProductUseCase(outbound);
     },
   },
   {

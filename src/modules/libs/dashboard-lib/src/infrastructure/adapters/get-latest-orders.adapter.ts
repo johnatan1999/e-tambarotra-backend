@@ -17,16 +17,16 @@ export class GetLatestOrdersAdapter implements GetLatestOrdersServiceOutbound {
     limit: number,
   ): Promise<LatestOrderEntity[]> {
     const query = `
-        select o.id         as order_id,
-               oi.id        as item_id,
-               p.id         as product_id,
-               c.id         as customer_id,
-               p.name       as product_name,
-               c.name       as customer_name,
+        select o.id                               as order_id,
+               oi.id                              as item_id,
+               p.id                               as product_id,
+               c.id                               as customer_id,
+               p.name                             as product_name,
+               c.first_name || ' ' || c.last_name as customer_name,
                o.status,
                oi.quantity,
                oi.unit_price,
-               o.created_at as order_date
+               o.created_at                       as order_date
         from orders o
                  join order_items oi on o.id = oi.order_id
                  join customers c on o.customer_id = c.id

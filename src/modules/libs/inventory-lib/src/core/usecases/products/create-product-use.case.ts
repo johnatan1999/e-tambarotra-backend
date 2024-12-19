@@ -3,10 +3,13 @@ import { ProductInput } from '@/inventory-lib/core/model/inputs';
 import { ProductEntity } from '@/inventory-lib/core/model/entities';
 import { CreateProductServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
 
-export class CreateProductUsecase implements CreateProductServiceInbound {
+export class CreateProductUseCase implements CreateProductServiceInbound {
   constructor(private readonly outbound: CreateProductServiceOutbound) {}
 
-  createProduct(article: ProductInput): Promise<ProductEntity> {
-    return this.outbound.createProduct(article);
+  createProduct(product: ProductInput): Promise<ProductEntity> {
+    return this.outbound.createProduct({
+      ...product,
+      initialQuantity: product.initialQuantity || product.availableStock,
+    });
   }
 }

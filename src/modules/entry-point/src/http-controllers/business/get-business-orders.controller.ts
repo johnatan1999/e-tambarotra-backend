@@ -17,7 +17,6 @@ export class GetBusinessOrdersController {
     @UserAccount() account: AccountEntity,
     @Res() res: any,
   ): Promise<GetOrdersByBusinessOutput> {
-    console.log(account);
     const orders = await this.service.getOrdersByBusiness(businessId);
     return res.status(200).json(orders);
   }
