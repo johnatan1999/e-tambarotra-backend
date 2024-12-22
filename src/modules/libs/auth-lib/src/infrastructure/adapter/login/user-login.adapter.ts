@@ -10,9 +10,9 @@ export class UserLoginAdapter implements LoginServiceOutbound {
     private readonly repository: Repository<UserDbEntity>,
   ) {}
 
-  getUserByEmail(email: string): Promise<UserEntity> {
+  getUserByEmailOrUsername(email: string): Promise<UserEntity> {
     return this.repository.findOne({
-      where: { email },
+      where: [{ email }, { username: email }],
       select: [
         'email',
         'password',

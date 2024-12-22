@@ -7,5 +7,5 @@ export interface LoginServiceOutbound {
    * @param {string} email - The email of the user to retrieve.
    * @returns {Promise<LoginOutput>} A promise that resolves to the user's login output.
    */
-  getUserByEmail(email: string): Promise<UserEntity>;
+  getUserByEmailOrUsername(email: string): Promise<UserEntity>;
 }

@@ -18,7 +18,7 @@ export class LoginUseCase implements LoginServiceInbound {
   ) {}
 
   async login(input: LoginInput): Promise<LoginOutput> {
-    const user = await this.outbound.getUserByEmail(input.email);
+    const user = await this.outbound.getUserByEmailOrUsername(input.email);
     if (!user) {
       throw new AuthException('User not found');
     }
