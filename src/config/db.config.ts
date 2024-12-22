@@ -13,7 +13,7 @@ import { SalesDbEntity } from '@/infrastructure-lib/database/entities/sales.db.e
 
 const DbConfig: TypeOrmModuleOptions = {
   type: 'sqlite',
-  database: 'e-tambarotra.sqlite',
+  database: 'e-tambarotra.prod.sqlite',
   // entities: [__dirname + '/**/*.entity{.ts,.js}'],
   entities: [
     ProductsDbEntity,

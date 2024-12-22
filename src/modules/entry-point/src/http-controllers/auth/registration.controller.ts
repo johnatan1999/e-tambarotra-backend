@@ -4,6 +4,7 @@ import { RegistrationService } from '@/auth-lib/application/services/registratio
 import { ApiExceptionHandler } from '../../decorators';
 import { PublicApi } from '../../decorators/public-api.decorator';
 
+@PublicApi()
 @Controller('auth')
 export class RegistrationController {
   constructor(
@@ -13,7 +14,6 @@ export class RegistrationController {
 
   @Post('register')
   @ApiExceptionHandler()
-  @PublicApi()
   async register(@Body() input: RegistrationInput) {
     const user = await this.service.register(input);
     return { success: !!user };

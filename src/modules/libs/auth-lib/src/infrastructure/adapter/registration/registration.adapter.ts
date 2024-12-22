@@ -25,8 +25,8 @@ export class RegistrationAdapter implements RegistrationServiceOutbound {
     const user = this.userRepository.create({
       username: input.username,
       email: input.email,
-      firstName: input.firstname,
-      lastName: input.lastname,
+      firstName: input.firstName,
+      lastName: input.lastName,
       role: input.role,
       password: input.password,
     });
