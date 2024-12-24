@@ -24,6 +24,7 @@ export class GetOrderByIdAdapter implements GetOrderByIdServiceOutbound {
         customer: {
           id: true,
           firstName: true,
+          lastName: true,
         },
       },
     });
