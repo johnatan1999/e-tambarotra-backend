@@ -8,3 +8,4 @@ export * from './order-item.db.entity';
 export * from './customer.db.entity';
 export * from './stock-replenishment.db.entity';
 export * from './expense.db.entity';
+export * from './user-session.db.entity';

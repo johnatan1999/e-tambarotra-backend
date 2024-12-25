@@ -1,20 +1,21 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import {
+  BusinessDbEntity,
   CustomerDbEntity,
   ExpenseDbEntity,
   OrderDbEntity,
   OrderItemDbEntity,
   ProductsDbEntity,
+  SalesDbEntity,
+  StockReajustmentDbEntity,
+  UserDbEntity,
+  UserSessionDbEntity,
 } from '@/infrastructure-lib/database/entities';
-import { BusinessDbEntity } from '@/infrastructure-lib/database/entities/business.db.entity';
-import { UserDbEntity } from '@/infrastructure-lib/database/entities/users.db.entity';
-import { StockReajustmentDbEntity } from '@/infrastructure-lib/database/entities/stock-reajustment.db.entity';
-import { SalesDbEntity } from '@/infrastructure-lib/database/entities/sales.db.entity';
 
 const DbConfig: TypeOrmModuleOptions = {
   type: 'sqlite',
-  database: 'e-tambarotra.prod.sqlite',
-  // entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  database: 'e-tambarotra.sqlite',
+  // entities: [__dirname + '/**/*.db.entity{.ts,.js}'],
   entities: [
     ProductsDbEntity,
     BusinessDbEntity,
@@ -25,6 +26,7 @@ const DbConfig: TypeOrmModuleOptions = {
     OrderItemDbEntity,
     CustomerDbEntity,
     ExpenseDbEntity,
+    UserSessionDbEntity,
   ],
   synchronize: true,
 };

@@ -7,6 +7,7 @@ import { LOGIN_SERVICE_INBOUND } from '@/auth-lib/core/services/inbounds/login';
 import {
   UserBusinessAdapter,
   UserLoginAdapter,
+  UserSessionAdapter,
 } from '@/auth-lib/infrastructure/adapter/login';
 import { LoginUseCase } from '@/auth-lib/core/usecases/login/login.usecase';
 import { TokenGeneratorAdapter } from '@/auth-lib/infrastructure/adapter';
@@ -59,6 +60,7 @@ export const AuthProvider: Provider[] = [
   {
     inject: [
       UserLoginAdapter,
+      UserSessionAdapter,
       UserBusinessAdapter,
       PasswordHashAdapter,
       TOKEN_GENERATOR_SERVICE_OUTBOUND,
@@ -66,12 +68,14 @@ export const AuthProvider: Provider[] = [
     provide: LOGIN_SERVICE_INBOUND,
     useFactory: (
       outbound: UserLoginAdapter,
+      userSessionOutbound: UserSessionAdapter,
       outboundBusiness: UserBusinessAdapter,
       passwordService: PasswordHashAdapter,
       tokenGenerator: TokenGeneratorAdapter,
     ) => {
       return new LoginUseCase(
         outbound,
+        userSessionOutbound,
         outboundBusiness,
         passwordService,
         tokenGenerator,

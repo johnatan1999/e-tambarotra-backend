@@ -15,7 +15,7 @@ export class UserBusinessAdapter implements UserBusinessServiceOutbound {
   async getUserBusinesses(userId: number): Promise<BusinessEntity[]> {
     return await this.repository.find({
       where: { owner: { id: userId } },
-      select: ['id', 'name'],
+      select: ['id', 'name', 'createdAt'],
     });
   }
 }

@@ -51,6 +51,7 @@ export function ApiExceptionHandler() {
 
         // Handle unknown exceptions
         const message = error.message || 'An unexpected error occurred';
+        console.log(error);
         throw new HttpException({ statusCode, message }, statusCode);
       }
     };

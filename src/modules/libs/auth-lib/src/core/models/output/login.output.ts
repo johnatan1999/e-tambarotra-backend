@@ -7,5 +7,6 @@ export type LoginOutput = {
   role: string;
   username: string;
   businesses: BusinessEntity[];
+  currentBusiness?: BusinessEntity;
   token: string;
 };
