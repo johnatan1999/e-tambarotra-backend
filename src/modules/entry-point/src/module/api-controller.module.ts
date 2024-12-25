@@ -7,11 +7,13 @@ import * as AuthControllers from '../http-controllers/auth';
 import * as FilesControllers from '../http-controllers/files';
 import * as UserControllers from '../http-controllers/users';
 import * as DashboardControllers from '../http-controllers/dashboard';
+import * as StateControllers from '../http-controllers/state';
 import { InventoryLibModule } from '@/inventory-lib/modules/inventory-lib.module';
 import { SalesLibModule } from '@/sales-lib/module/sales-lib.module';
 import { AuthLibModule } from '@/auth-lib/modules/auth-lib.module';
 import { DashboardLibModule } from '@/dashboard-lib/modules/dashboard-lib.module';
 import { UsersLibModule } from '@/users-lib/module/users-lib.module';
+import { CoreLibModule } from '@/core-lib/modules/core-lib.module';
 
 const libraries = [
   InventoryLibModule,
@@ -19,6 +21,7 @@ const libraries = [
   AuthLibModule,
   DashboardLibModule,
   UsersLibModule,
+  CoreLibModule,
 ];
 const controllers = [
   ...Object.values(ProductControllers),
@@ -29,6 +32,7 @@ const controllers = [
   ...Object.values(FilesControllers),
   ...Object.values(DashboardControllers),
   ...Object.values(UserControllers),
+  ...Object.values(StateControllers),
 ];
 
 @Module({

@@ -24,12 +24,20 @@ export class OrderDbEntity {
   customer: CustomerDbEntity;
 
   @Column({
-    name: 'status',
+    name: 'life_cycle_state',
     // type: 'enum',
     // enum: ['pending', 'completed', 'canceled'],
     default: 'pending',
   })
   status: string;
+
+  @Column({
+    name: 'state',
+    // type: 'enum',
+    // enum: ['pending', 'completed', 'canceled'],
+    default: 'active',
+  })
+  state: string;
 
   @ManyToOne(() => BusinessDbEntity, (business) => business.id, {
     nullable: false,

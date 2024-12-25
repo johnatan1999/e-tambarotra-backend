@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProductsDbEntity } from '@/infrastructure-lib/database/entities';
+import { EntityStateEnum } from '@/core-lib/core/models/entities';
 
 @Injectable()
 export class GetProductAdapter implements GetProductServiceOutbound {
@@ -14,7 +15,7 @@ export class GetProductAdapter implements GetProductServiceOutbound {
 
   getProductsByBusiness(businessId: number): Promise<ProductEntity[]> {
     return this.repository.find({
-      where: { business: { id: businessId } },
+      where: { business: { id: businessId }, state: EntityStateEnum.ACTIVE },
       order: { createdAt: 'DESC' },
     });
   }
