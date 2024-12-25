@@ -5,5 +5,5 @@ export type BusinessEntity = {
   email: string;
   phone: string;
   createdAt: Date;
-  owner: { id: number };
+  owner?: { id: number };
 };
