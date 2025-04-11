@@ -13,7 +13,7 @@ export class UpdateProductAdapter implements UpdateProductServiceOutbound {
     private readonly repository: Repository<ProductsDbEntity>,
   ) {}
 
-  async updateProduct(id: string, input: ProductInput): Promise<ProductEntity> {
+  updateProduct(id: string, input: ProductInput): Promise<ProductEntity> {
     const entity = this.repository.create({
       ...input,
     });

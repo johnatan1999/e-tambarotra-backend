@@ -13,7 +13,7 @@ export class GetOrdersByBusinessAdapter
     private readonly repository: Repository<OrderDbEntity>,
   ) {}
 
-  async getOrdersByBusiness(businessId: number): Promise<OrderDbEntity[]> {
+  getOrdersByBusiness(businessId: number): Promise<OrderDbEntity[]> {
     return this.repository.find({
       where: { business: { id: businessId } },
       relations: ['items', 'customer'],

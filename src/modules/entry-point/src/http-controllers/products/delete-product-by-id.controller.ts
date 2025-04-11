@@ -1,33 +1,30 @@
 import {
-  Body,
   Controller,
+  Delete,
   Inject,
   Param,
   ParseIntPipe,
-  Patch,
 } from '@nestjs/common';
 import { ApiExceptionHandler } from '../../decorators';
 import { UpdateStateService } from '@/core-lib/core/application/services/state';
 import { EntityEnum, EntityStateEnum } from '@/core-lib/core/models/entities';
 
-@Controller(':entityType/state/:entityId/state')
-export class UpdateStateController {
+@Controller()
+export class DeleteProductByIdController {
   constructor(
     @Inject(UpdateStateService)
     private readonly updateStateService: UpdateStateService,
   ) {}
 
-  @Patch()
+  @Delete('products/:entityId')
   @ApiExceptionHandler()
-  async updateState(
-    @Param('entityType') entity: EntityEnum,
+  async deleteProduct(
     @Param('entityId', ParseIntPipe) entityId: number,
-    @Body('state') state: EntityStateEnum,
   ): Promise<{ success: boolean }> {
     const success = await this.updateStateService.updateState(
       entityId,
-      entity,
-      state,
+      EntityEnum.PRODUCT,
+      EntityStateEnum.DELETED,
     );
 
     return { success };
