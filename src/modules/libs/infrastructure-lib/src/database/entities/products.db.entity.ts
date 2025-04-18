@@ -3,9 +3,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { BusinessDbEntity } from './business.db.entity';
+import { PurchaseDbEntity } from '@/infrastructure-lib/database/entities/purchase.db.entity';
 
 @Entity('products')
 export class ProductsDbEntity {
@@ -18,8 +20,11 @@ export class ProductsDbEntity {
   @Column({ name: 'image_url', type: 'text', nullable: true })
   imageUrl: string;
 
-  @Column({ type: 'decimal' })
-  price: number;
+  @Column({ name: 'selling_price', type: 'decimal' })
+  sellingPrice: number;
+
+  @Column({ name: 'first_purchase_price', type: 'decimal', default: 0 })
+  firstPurchasePrice: number;
 
   @Column({ name: 'purchase_price', type: 'decimal' })
   purchasePrice: number;
@@ -46,6 +51,9 @@ export class ProductsDbEntity {
     default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
+
+  @OneToMany(() => PurchaseDbEntity, (purchase) => purchase.product)
+  purchases: PurchaseDbEntity[];
 
   @Column({
     name: 'updated_at',

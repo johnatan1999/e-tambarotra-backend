@@ -11,6 +11,7 @@ import {
   UserDbEntity,
   UserSessionDbEntity,
 } from '@/infrastructure-lib/database/entities';
+import { PurchaseDbEntity } from '@/infrastructure-lib/database/entities/purchase.db.entity';
 
 const DbConfig: TypeOrmModuleOptions = {
   type: 'sqlite',
@@ -27,6 +28,7 @@ const DbConfig: TypeOrmModuleOptions = {
     CustomerDbEntity,
     ExpenseDbEntity,
     UserSessionDbEntity,
+    PurchaseDbEntity,
   ],
   synchronize: true,
 };
