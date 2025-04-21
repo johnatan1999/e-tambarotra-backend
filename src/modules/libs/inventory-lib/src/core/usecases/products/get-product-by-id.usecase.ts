@@ -1,5 +1,5 @@
 import { GetProductByIdServiceInbound } from '@/inventory-lib/core/services/inbounds/products/get-product-by-id.service.inbound';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 import { GetProductByIdServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
 import { NotFoundException } from '@/core-lib/core/exceptions/not-found.exception';
 

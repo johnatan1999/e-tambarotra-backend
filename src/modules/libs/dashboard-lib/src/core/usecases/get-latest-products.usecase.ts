@@ -1,6 +1,6 @@
 import { GetLatestProductsServiceInbound } from '@/dashboard-lib/core/services/inbounds';
 import { GetLatestProductsServiceOutbound } from '@/dashboard-lib/core/services/outbounds';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 
 export class GetLatestProductsUseCase
   implements GetLatestProductsServiceInbound

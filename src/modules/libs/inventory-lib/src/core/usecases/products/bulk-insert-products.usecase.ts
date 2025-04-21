@@ -1,6 +1,6 @@
 import { BulkInsertProductsServiceInbound } from '@/inventory-lib/core/services/inbounds/products';
 import { BulkInsertProductsServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
 
 export class BulkInsertProductsUseCase
   implements BulkInsertProductsServiceInbound

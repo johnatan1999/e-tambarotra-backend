@@ -7,7 +7,7 @@ import {
   OrderItemDbEntity,
   ProductsDbEntity,
   SalesDbEntity,
-  StockReajustmentDbEntity,
+  StockAdjustmentDbEntity,
   UserDbEntity,
   UserSessionDbEntity,
 } from '@/infrastructure-lib/database/entities';
@@ -21,7 +21,7 @@ const DbConfig: TypeOrmModuleOptions = {
     ProductsDbEntity,
     BusinessDbEntity,
     UserDbEntity,
-    StockReajustmentDbEntity,
+    StockAdjustmentDbEntity,
     SalesDbEntity,
     OrderDbEntity,
     OrderItemDbEntity,

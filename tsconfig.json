@@ -24,6 +24,9 @@
       "@/sales-lib/*": [
         "modules/libs/sales-lib/src/*"
       ],
+      "@/purchase-lib/*": [
+        "modules/libs/purchase-lib/src/*"
+      ],
       "@/infrastructure-lib/*": [
         "modules/libs/infrastructure-lib/src/*"
       ],

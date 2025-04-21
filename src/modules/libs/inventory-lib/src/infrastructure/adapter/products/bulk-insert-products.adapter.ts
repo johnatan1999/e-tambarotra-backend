@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ProductsDbEntity } from '@/infrastructure-lib/database/entities';
 import { Repository } from 'typeorm';
 import { BulkInsertProductsServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
 
 @Injectable()
 export class BulkInsertProductsAdapter

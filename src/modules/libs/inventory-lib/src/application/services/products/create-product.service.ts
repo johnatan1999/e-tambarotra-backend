@@ -3,7 +3,7 @@ import {
   CREATE_PRODUCT_SERVICE_INBOUND,
   CreateProductServiceInbound,
 } from '@/inventory-lib/core/services/inbounds/products';
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
 import { CreateProductOutput } from '@/inventory-lib/application/models/output';
 
 @Injectable()

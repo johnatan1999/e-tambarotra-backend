@@ -1,6 +1,6 @@
 import { CreateProductServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 import { Injectable } from '@nestjs/common';
 import { ProductsDbEntity } from '@/infrastructure-lib/database/entities';
 import { Repository } from 'typeorm';

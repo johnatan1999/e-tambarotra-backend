@@ -9,6 +9,7 @@ import { CreateProductAdapter } from '@/inventory-lib/infrastructure/adapter/pro
 import {
   BusinessDbEntity,
   ProductsDbEntity,
+  PurchaseDbEntity,
 } from '@/infrastructure-lib/database/entities';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GetProductAdapter } from '@/inventory-lib/infrastructure/adapter/products/get-product.adapter';
@@ -26,14 +27,17 @@ import {
   UpdateProductAdapter,
 } from '@/inventory-lib/infrastructure/adapter/products';
 import { UpdateProductService } from '@/inventory-lib/application/services/products/update-product.service';
+import { CreatePurchaseAdapter } from '@/purchase-lib/infrastructure/adapter/purchase';
+import { TypeOrmTransactionalRunner } from '@/core-lib/infrastructure/adapter/transaction/type-orm-transaction-runner';
 
-const entities = [ProductsDbEntity, BusinessDbEntity];
+const entities = [ProductsDbEntity, BusinessDbEntity, PurchaseDbEntity];
 const services = [
   CreateProductService,
   UpdateProductService,
   GetProductService,
   GetProductByIdService,
   BulkInsertProductsService,
+  TypeOrmTransactionalRunner,
 ];
 const useCases = [
   CreateProductUseCase,
@@ -48,6 +52,7 @@ const adapters = [
   GetProductAdapter,
   GetProductByIdAdapter,
   BulkInsertProductsAdapter,
+  CreatePurchaseAdapter,
 ];
 
 @Module({

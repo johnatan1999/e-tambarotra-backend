@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 import {
   GET_PRODUCT_BY_ID_SERVICE_INBOUND,
   GetProductByIdServiceInbound,

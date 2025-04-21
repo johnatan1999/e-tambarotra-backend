@@ -1,4 +1,4 @@
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 
 export const GET_PRODUCT_BY_ID_SERVICE_INBOUND =
   'GET_PRODUCT_BY_ID_SERVICE_INBOUND';

@@ -20,6 +20,10 @@ import {
   UpdateProductAdapter,
 } from '@/inventory-lib/infrastructure/adapter/products';
 import { BulkInsertProductsUseCase } from '@/inventory-lib/core/usecases/products/bulk-insert-products.usecase';
+import { CreatePurchaseServiceOutbound } from '@/purchase-lib/core/services/outbounds/purchase';
+import { CreatePurchaseAdapter } from '@/purchase-lib/infrastructure/adapter/purchase';
+import { TransactionalRunner } from '@/core-lib/core/services/transaction/transaction-runner';
+import { CreateProductServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
 
 export const ProductsProviders: Provider[] = [
   {
@@ -30,10 +34,18 @@ export const ProductsProviders: Provider[] = [
     },
   },
   {
-    inject: [CreateProductAdapter],
+    inject: [CreateProductAdapter, CreatePurchaseAdapter],
     provide: CREATE_PRODUCT_SERVICE_INBOUND,
-    useFactory: (outbound: CreateProductAdapter) => {
-      return new CreateProductUseCase(outbound);
+    useFactory: (
+      outbound: CreateProductServiceOutbound,
+      purchaseOutbound: CreatePurchaseServiceOutbound,
+      transactionRunner: TransactionalRunner,
+    ) => {
+      return new CreateProductUseCase(
+        outbound,
+        purchaseOutbound,
+        transactionRunner,
+      );
     },
   },
   {

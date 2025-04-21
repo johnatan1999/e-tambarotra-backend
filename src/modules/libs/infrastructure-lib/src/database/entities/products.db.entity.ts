@@ -23,11 +23,14 @@ export class ProductsDbEntity {
   @Column({ name: 'selling_price', type: 'decimal' })
   sellingPrice: number;
 
-  @Column({ name: 'first_purchase_price', type: 'decimal', default: 0 })
+  @Column({ name: 'first_purchase_price', type: 'decimal' })
   firstPurchasePrice: number;
 
   @Column({ name: 'purchase_price', type: 'decimal' })
   purchasePrice: number;
+
+  @Column({ name: 'cost_price', type: 'decimal', default: 0 })
+  costPrice: number;
 
   @Column({ name: 'available_stock', type: 'int' })
   availableStock: number;

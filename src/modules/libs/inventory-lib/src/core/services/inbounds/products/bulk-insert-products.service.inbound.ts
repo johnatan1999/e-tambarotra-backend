@@ -1,4 +1,4 @@
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
 
 export const BULK_INSERT_PRODUCTS_SERVICE_INBOUND =
   'BULK_INSERT_PRODUCTS_SERVICE_INBOUND';

@@ -8,8 +8,8 @@ import {
 import { ProductsDbEntity } from './products.db.entity';
 import { UserDbEntity } from './users.db.entity';
 
-@Entity('stock_reajustments')
-export class StockReajustmentDbEntity {
+@Entity('stock_adjustments')
+export class StockAdjustmentDbEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,8 +21,19 @@ export class StockReajustmentDbEntity {
   @JoinColumn({ name: 'user_id' })
   user: UserDbEntity;
 
-  @Column({ name: 'adjustement_quantity', type: 'int' })
-  adjustmentQuantity: number;
+  @Column({ name: 'adjustment_quantity', type: 'int' })
+  newQuantity: number;
+
+  @Column({ name: 'adjusted_quantity', type: 'int' })
+  adjustedQuantity: number;
+
+  @Column({ name: 'adjusted_unit_price', type: 'decimal', nullable: true })
+  adjustedUnitPrice?: number;
+
+  @Column({
+    name: 'type' /*, type: 'enum', enum: ['quantity', 'value', 'both']*/,
+  })
+  type: 'quantity' | 'value' | 'both';
 
   @Column({ type: 'varchar', length: 255 })
   reason: string;

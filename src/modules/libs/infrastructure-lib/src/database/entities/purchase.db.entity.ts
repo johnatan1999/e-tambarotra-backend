@@ -6,14 +6,13 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ProductsDbEntity } from '@/infrastructure-lib/database/entities/products.db.entity';
-import { BusinessDbEntity } from '@/infrastructure-lib/database/entities/business.db.entity';
 
 @Entity('purchases')
 export class PurchaseDbEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => ProductsDbEntity, (product) => product.purchases)
+  @ManyToOne(() => ProductsDbEntity, (product) => product.id)
   @JoinColumn({ name: 'product_id' })
   product: ProductsDbEntity;
 
@@ -29,8 +28,4 @@ export class PurchaseDbEntity {
     default: () => 'CURRENT_TIMESTAMP',
   })
   purchaseDate: Date;
-
-  @ManyToOne(() => BusinessDbEntity, (business) => business.id)
-  @JoinColumn({ name: 'business_id' })
-  business: BusinessDbEntity;
 }

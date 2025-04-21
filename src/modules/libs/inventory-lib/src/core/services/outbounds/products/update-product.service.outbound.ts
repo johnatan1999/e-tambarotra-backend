@@ -1,5 +1,5 @@
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 
 export const UPDATE_PRODUCT_SERVICE_OUTBOUND =
   'UPDATE_PRODUCT_SERVICE_OUTBOUND';
@@ -17,5 +17,8 @@ export interface UpdateProductServiceOutbound {
    * @param product The information of the product to be updated.
    * @returns A promise that resolves to the updated product.
    */
-  updateProduct(id: string, product: ProductInput): Promise<ProductEntity>;
+  updateProduct(
+    id: string,
+    product: Partial<ProductInput>,
+  ): Promise<ProductEntity>;
 }

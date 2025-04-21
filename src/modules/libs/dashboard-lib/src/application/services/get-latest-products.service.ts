@@ -3,7 +3,7 @@ import {
   GET_LATEST_PRODUCTS_SERVICE_INBOUND,
   GetLatestProductsServiceInbound,
 } from '@/dashboard-lib/core/services/inbounds';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 
 @Injectable()
 export class GetLatestProductsService {

@@ -1,6 +1,6 @@
 import { Body, Controller, Inject, Param, Put } from '@nestjs/common';
 import { UpdateProductService } from '@/inventory-lib/application/services/products';
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
 
 @Controller('products')
 export class UpdateProductController {

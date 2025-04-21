@@ -8,7 +8,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { GetLatestProductsService } from '@/dashboard-lib/application/services/get-latest-products.service';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 
 @Controller('dashboard')
 export class GetLatestProductsController {

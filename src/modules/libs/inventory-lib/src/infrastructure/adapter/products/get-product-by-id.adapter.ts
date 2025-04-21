@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { GetProductByIdServiceOutbound } from '@/inventory-lib/core/services/outbounds/products/get-product-by-id.service.outbound';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProductsDbEntity } from '@/infrastructure-lib/database/entities';

@@ -1,5 +1,5 @@
 import { GetProductServiceInbound } from '@/inventory-lib/core/services/inbounds/products';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 import { GetProductServiceOutbound } from '@/inventory-lib/core/services/outbounds/products';
 
 export class GetProductUseCase implements GetProductServiceInbound {

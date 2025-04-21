@@ -3,7 +3,7 @@ import { GetLatestProductsServiceOutbound } from '@/dashboard-lib/core/services/
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProductsDbEntity } from '@/infrastructure-lib/database/entities';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 
 @Injectable()
 export class GetLatestProductsAdapter

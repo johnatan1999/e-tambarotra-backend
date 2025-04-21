@@ -1,5 +1,5 @@
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
-import { ProductEntity } from '@/inventory-lib/core/model/entities';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
+import { ProductEntity } from 'modules/libs/inventory-lib/src/core/models/entities';
 
 export const CREATE_PRODUCT_SERVICE_INBOUND = 'CreateProductServiceInbound';
 

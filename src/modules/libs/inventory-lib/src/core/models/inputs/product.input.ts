@@ -4,7 +4,9 @@ export class ProductInput {
   businessId: number;
   imageUrl: string;
   name: string;
-  price: number;
+  sellingPrice: number;
   purchasePrice: number;
+  costPrice?: number;
+  firstPurchasePrice: number;
   reorderThreshold: number;
 }

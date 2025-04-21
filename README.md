@@ -82,7 +82,7 @@ managing infrastructure.
 ### Services
 
 ```bash
-$ pnpm run gen:services inventory-lib products delete-product-by-id
+$ pnpm run gen:services inventory-lib products create-readjustement
 ```
 
 ### Entities

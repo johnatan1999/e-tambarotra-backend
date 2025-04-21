@@ -1,6 +1,6 @@
 import { BulkInsertProductsService } from '@/inventory-lib/application/services/products';
 import { Body, Controller, Inject, Post } from '@nestjs/common';
-import { ProductInput } from '@/inventory-lib/core/model/inputs';
+import { ProductInput } from 'modules/libs/inventory-lib/src/core/models/inputs';
 
 @Controller('products/bulk')
 export class BulkInsertProductsController {

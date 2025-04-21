@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import * as ProductControllers from '../http-controllers/products';
 import * as BusinessControllers from '../http-controllers/business';
+import * as PurchaseControllers from '../http-controllers/purchase';
+import * as StockAdjustmentControllers from '../http-controllers/stock-adjustment';
 import * as OrderControllers from '../http-controllers/orders';
 import * as CustomerControllers from '../http-controllers/customers';
 import * as AuthControllers from '../http-controllers/auth';
@@ -14,10 +16,12 @@ import { AuthLibModule } from '@/auth-lib/modules/auth-lib.module';
 import { DashboardLibModule } from '@/dashboard-lib/modules/dashboard-lib.module';
 import { UsersLibModule } from '@/users-lib/module/users-lib.module';
 import { CoreLibModule } from '@/core-lib/modules/core-lib.module';
+import { PurchaseLibModule } from '@/purchase-lib/modules/purchase-lib.module';
 
 const libraries = [
   InventoryLibModule,
   SalesLibModule,
+  PurchaseLibModule,
   AuthLibModule,
   DashboardLibModule,
   UsersLibModule,
@@ -26,6 +30,8 @@ const libraries = [
 const controllers = [
   ...Object.values(ProductControllers),
   ...Object.values(BusinessControllers),
+  ...Object.values(PurchaseControllers),
+  ...Object.values(StockAdjustmentControllers),
   ...Object.values(OrderControllers),
   ...Object.values(CustomerControllers),
   ...Object.values(AuthControllers),
