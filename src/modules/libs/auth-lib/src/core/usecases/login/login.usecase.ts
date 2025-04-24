@@ -29,7 +29,7 @@ export class LoginUseCase implements LoginServiceInbound {
       user.password,
     );
     if (!isPasswordValid) {
-      throw new AuthException('Invalid password');
+      throw new AuthException('Invalid authentication');
     }
     const businesses = await this.businessService.getUserBusinesses(user.id);
     const userSession = await this.userSessionOutbound.getUserSession(user.id);

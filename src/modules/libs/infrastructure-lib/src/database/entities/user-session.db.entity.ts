@@ -23,10 +23,10 @@ export class UserSessionDbEntity {
   @JoinColumn({ name: 'current_business_id' })
   currentBusiness: BusinessDbEntity | null;
 
-  @Column({ type: 'varchar', length: 45 })
+  @Column({ name: 'ip_address', type: 'varchar', length: 45 })
   ipAddress: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ name: 'user_agent', type: 'varchar', length: 255 })
   userAgent: string;
 
   @Column({

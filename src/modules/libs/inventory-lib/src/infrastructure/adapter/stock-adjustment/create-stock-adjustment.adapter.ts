@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateStockAdjustmentServiceOutbound } from '@/inventory-lib/core/services/outbounds/stock-adjustment';
 import { StockAdjustmentDbEntity } from '@/infrastructure-lib/database/entities';
 import { StockAdjustmentInput } from '@/inventory-lib/core/models/inputs';
-import { StockAdjustmentEntity } from '@/inventory-lib/core/models/entities';
+import { StockAdjustmentAdapterEntity } from '@/inventory-lib/infrastructure/entities';
 
 @Injectable()
 export class CreateStockAdjustmentAdapter
@@ -18,7 +18,7 @@ export class CreateStockAdjustmentAdapter
   create(
     userId: number,
     input: StockAdjustmentInput,
-  ): Promise<StockAdjustmentEntity> {
+  ): Promise<StockAdjustmentAdapterEntity> {
     const entity = this.repository.create({
       ...input,
       product: { id: input.productId },

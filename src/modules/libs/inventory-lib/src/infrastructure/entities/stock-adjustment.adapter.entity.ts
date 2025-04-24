@@ -1,4 +1,4 @@
-export type StockAdjustmentEntity = {
+export type StockAdjustmentAdapterEntity = {
   id: number;
   product: { id: number; name: string };
   newQuantity: number;

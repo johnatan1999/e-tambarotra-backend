@@ -3,6 +3,7 @@ import {
   AuthException,
   ProductOutOfStockException,
 } from '@/core-lib/core/exceptions';
+import { NotFoundException } from '@/core-lib/core/exceptions/not-found.exception';
 
 type ExceptionResponse = {
   status: number;
@@ -47,6 +48,8 @@ export function ApiExceptionHandler() {
           statusCode = HttpStatus.CONFLICT;
         } else if (error instanceof AuthException) {
           statusCode = HttpStatus.UNAUTHORIZED;
+        } else if (error instanceof NotFoundException) {
+          statusCode = HttpStatus.NOT_FOUND;
         }
 
         // Handle unknown exceptions

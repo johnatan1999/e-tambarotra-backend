@@ -1,5 +1,5 @@
 import { StockAdjustmentInput } from '@/inventory-lib/core/models/inputs';
-import { StockAdjustmentEntity } from '@/inventory-lib/core/models/entities';
+import { StockAdjustmentAdapterEntity } from '@/inventory-lib/infrastructure/entities';
 
 export interface CreateStockAdjustmentServiceOutbound {
   /**
@@ -10,5 +10,5 @@ export interface CreateStockAdjustmentServiceOutbound {
   create(
     userId: number,
     input: StockAdjustmentInput,
-  ): Promise<StockAdjustmentEntity>;
+  ): Promise<StockAdjustmentAdapterEntity>;
 }

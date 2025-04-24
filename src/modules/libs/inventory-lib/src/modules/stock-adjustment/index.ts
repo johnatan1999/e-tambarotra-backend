@@ -5,28 +5,50 @@ import {
   ProductsDbEntity,
   PurchaseDbEntity,
   StockAdjustmentDbEntity,
+  UserSessionDbEntity,
 } from '@/infrastructure-lib/database/entities';
-import { CreateStockAdjustmentService } from '@/inventory-lib/application/services/stock-adjustment';
-import { CreateStockAdjustmentUseCase } from '@/inventory-lib/core/usecases/stock-adjustment';
-import { CreateStockAdjustmentAdapter } from '@/inventory-lib/infrastructure/adapter/stock-adjustment';
+import {
+  CreateStockAdjustmentService,
+  GetStockAdjustmentsService,
+} from '@/inventory-lib/application/services/stock-adjustment';
+import {
+  CreateStockAdjustmentUseCase,
+  GetStockAdjustmentsUseCase,
+} from '@/inventory-lib/core/usecases/stock-adjustment';
+import {
+  CreateStockAdjustmentAdapter,
+  GetStockAdjustmentsAdapter,
+} from '@/inventory-lib/infrastructure/adapter/stock-adjustment';
 import { CreatePurchaseAdapter } from '@/purchase-lib/infrastructure/adapter/purchase';
 import {
   GetProductByIdAdapter,
   UpdateProductAdapter,
 } from '@/inventory-lib/infrastructure/adapter/products';
 import { TypeOrmTransactionalRunner } from '@/core-lib/infrastructure/adapter/transaction/type-orm-transaction-runner';
+import { UserSessionAdapter } from '@/auth-lib/infrastructure/adapter/login';
 
-const entities = [StockAdjustmentDbEntity, PurchaseDbEntity, ProductsDbEntity];
+const entities = [
+  StockAdjustmentDbEntity,
+  PurchaseDbEntity,
+  ProductsDbEntity,
+  UserSessionDbEntity,
+];
 
-const services = [CreateStockAdjustmentService, TypeOrmTransactionalRunner];
+const services = [
+  CreateStockAdjustmentService,
+  GetStockAdjustmentsService,
+  TypeOrmTransactionalRunner,
+];
 
-const useCases = [CreateStockAdjustmentUseCase];
+const useCases = [CreateStockAdjustmentUseCase, GetStockAdjustmentsUseCase];
 
 const adapters = [
   CreateStockAdjustmentAdapter,
+  GetStockAdjustmentsAdapter,
   CreatePurchaseAdapter,
   GetProductByIdAdapter,
   UpdateProductAdapter,
+  UserSessionAdapter,
 ];
 
 @Module({
