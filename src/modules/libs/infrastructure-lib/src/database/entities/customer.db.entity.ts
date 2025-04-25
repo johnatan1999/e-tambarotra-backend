@@ -61,4 +61,7 @@ export class CustomerDbEntity {
 
   @OneToMany(() => OrderDbEntity, (order) => order.customer)
   orders: OrderDbEntity[];
+
+  @Column({ name: 'state', type: 'int', default: 1 })
+  state: number;
 }

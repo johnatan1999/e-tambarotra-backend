@@ -35,6 +35,12 @@ export class SupplierDbEntity {
   @Column({ type: 'text', nullable: true })
   address?: string;
 
+  @Column({ name: 'additional_information', type: 'text', nullable: true })
+  additionalInformation: string;
+
+  @Column({ name: 'state', type: 'int', default: 1 })
+  state: number;
+
   @Column({
     name: 'company_name',
     type: 'varchar',
