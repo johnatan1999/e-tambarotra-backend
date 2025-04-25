@@ -23,9 +23,8 @@ export class GetStockAdjustmentsAdapter
       sortOrder?: 'ASC' | 'DESC';
     },
   ): Promise<StockAdjustmentAdapterEntity[]> {
-    console.log(businessId);
     return this.stockAdjustmentRepository.find({
-      relations: ['product', 'product.business'],
+      relations: ['product', 'product.business', 'user'],
       where: {
         product: {
           business: {

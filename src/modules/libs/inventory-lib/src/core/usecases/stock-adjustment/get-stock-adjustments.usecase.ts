@@ -40,6 +40,7 @@ export class GetStockAdjustmentsUseCase
       adjustedUnitPrice: row.adjustedUnitPrice,
       type: row.type,
       reason: row.reason,
+      createdBy: `${row.user.firstName} ${row.user.lastName}`,
       createdAt: row.createdAt,
       updatedAt: row.updatedAt,
     }));

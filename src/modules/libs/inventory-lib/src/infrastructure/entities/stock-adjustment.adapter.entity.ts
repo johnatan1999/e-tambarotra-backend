@@ -8,4 +8,5 @@ export type StockAdjustmentAdapterEntity = {
   reason: string;
   createdAt: Date;
   updatedAt: Date;
+  user: { firstName: string; lastName: string };
 };

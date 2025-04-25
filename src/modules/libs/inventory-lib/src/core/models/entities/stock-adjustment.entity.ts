@@ -6,6 +6,7 @@ export type StockAdjustmentEntity = {
   adjustedUnitPrice?: number;
   type: 'quantity' | 'value' | 'both';
   reason: string;
+  createdBy: string;
   createdAt: Date;
   updatedAt: Date;
 };

@@ -44,7 +44,23 @@ export class CreateStockAdjustmentUseCase
           availableStock: product.availableStock + input.adjustedQuantity,
         },
       );
-      return this.createStockAdjustmentServiceOutbound.create(userId, input);
+      const stockAdjustment =
+        await this.createStockAdjustmentServiceOutbound.create(userId, input);
+      return {
+        id: stockAdjustment.id,
+        product: {
+          id: stockAdjustment.product.id,
+          name: stockAdjustment.product.name,
+        },
+        adjustedQuantity: stockAdjustment.adjustedQuantity,
+        newQuantity: stockAdjustment.newQuantity,
+        adjustedUnitPrice: stockAdjustment.adjustedUnitPrice,
+        type: stockAdjustment.type,
+        reason: stockAdjustment.reason,
+        createdBy: `${stockAdjustment.user.firstName} ${stockAdjustment.user.lastName}`,
+        createdAt: stockAdjustment.createdAt,
+        updatedAt: stockAdjustment.updatedAt,
+      };
     });
   }
 }

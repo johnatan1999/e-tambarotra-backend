@@ -18,7 +18,7 @@ export class StockAdjustmentDbEntity {
   product: ProductsDbEntity;
 
   @ManyToOne(() => UserDbEntity, (user) => user.id)
-  @JoinColumn({ name: 'user_id' })
+  @JoinColumn({ name: 'created_by' })
   user: UserDbEntity;
 
   @Column({ name: 'adjustment_quantity', type: 'int' })
