@@ -5,18 +5,29 @@ import {
   SupplierDbEntity,
   UserSessionDbEntity,
 } from '@/infrastructure-lib/database/entities';
-import { CreateSupplierService } from '@/purchase-lib/application/services/supplier';
+import {
+  CreateSupplierService,
+  GetSuppliersByBusinessService,
+} from '@/purchase-lib/application/services/supplier';
 import { CreateSupplierUseCase } from '@/purchase-lib/core/usecases/supplier';
-import { CreateSupplierAdapter } from '@/purchase-lib/infrastructure/adapter/supplier';
+import {
+  CreateSupplierAdapter,
+  GetSuppliersByBusinessAdapter,
+} from '@/purchase-lib/infrastructure/adapter/supplier';
 import { UserSessionAdapter } from '@/auth-lib/infrastructure/adapter/login';
+import { GetSuppliersByBusinessUseCase } from '@/purchase-lib/core/usecases/supplier/get-suppliers-by-business.usecase';
 
 const entities = [SupplierDbEntity, UserSessionDbEntity];
 
-const services = [CreateSupplierService];
+const services = [CreateSupplierService, GetSuppliersByBusinessService];
 
-const useCases = [CreateSupplierUseCase];
+const useCases = [CreateSupplierUseCase, GetSuppliersByBusinessUseCase];
 
-const adapters = [CreateSupplierAdapter, UserSessionAdapter];
+const adapters = [
+  CreateSupplierAdapter,
+  UserSessionAdapter,
+  GetSuppliersByBusinessAdapter,
+];
 
 @Module({
   imports: [TypeOrmModule.forFeature(entities)],
