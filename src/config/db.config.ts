@@ -8,6 +8,7 @@ import {
   ProductsDbEntity,
   SalesDbEntity,
   StockAdjustmentDbEntity,
+  SupplierDbEntity,
   UserDbEntity,
   UserSessionDbEntity,
 } from '@/infrastructure-lib/database/entities';
@@ -23,6 +24,7 @@ const DbConfig: TypeOrmModuleOptions = {
     UserDbEntity,
     StockAdjustmentDbEntity,
     SalesDbEntity,
+    SupplierDbEntity,
     OrderDbEntity,
     OrderItemDbEntity,
     CustomerDbEntity,

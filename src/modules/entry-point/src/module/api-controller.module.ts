@@ -3,6 +3,7 @@ import * as ProductControllers from '../http-controllers/products';
 import * as BusinessControllers from '../http-controllers/business';
 import * as PurchaseControllers from '../http-controllers/purchase';
 import * as StockAdjustmentControllers from '../http-controllers/stock-adjustment';
+import * as SupplierControllers from '../http-controllers/supplier';
 import * as OrderControllers from '../http-controllers/orders';
 import * as CustomerControllers from '../http-controllers/customers';
 import * as AuthControllers from '../http-controllers/auth';
@@ -32,6 +33,7 @@ const controllers = [
   ...Object.values(BusinessControllers),
   ...Object.values(PurchaseControllers),
   ...Object.values(StockAdjustmentControllers),
+  ...Object.values(SupplierControllers),
   ...Object.values(OrderControllers),
   ...Object.values(CustomerControllers),
   ...Object.values(AuthControllers),

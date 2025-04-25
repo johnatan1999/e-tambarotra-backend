@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ProductsDbEntity } from '@/infrastructure-lib/database/entities/products.db.entity';
+import { SupplierDbEntity } from '@/infrastructure-lib/database/entities/suppliers.db.entity';
 
 @Entity('purchases')
 export class PurchaseDbEntity {
@@ -21,6 +22,10 @@ export class PurchaseDbEntity {
 
   @Column({ name: 'unit_price', type: 'decimal' })
   unitPrice: number;
+
+  @ManyToOne(() => SupplierDbEntity, (supplier) => supplier.purchases)
+  @JoinColumn({ name: 'supplier_id' })
+  supplier: SupplierDbEntity;
 
   @Column({
     name: 'purchase_date',
