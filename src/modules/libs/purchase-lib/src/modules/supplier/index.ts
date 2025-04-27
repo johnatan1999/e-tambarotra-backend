@@ -7,11 +7,16 @@ import {
 } from '@/infrastructure-lib/database/entities';
 import {
   CreateSupplierService,
+  GetSupplierByIdService,
   GetSuppliersByBusinessService,
 } from '@/purchase-lib/application/services/supplier';
-import { CreateSupplierUseCase } from '@/purchase-lib/core/usecases/supplier';
+import {
+  CreateSupplierUseCase,
+  GetSupplierByIdUseCase,
+} from '@/purchase-lib/core/usecases/supplier';
 import {
   CreateSupplierAdapter,
+  GetSupplierByIdAdapter,
   GetSuppliersByBusinessAdapter,
 } from '@/purchase-lib/infrastructure/adapter/supplier';
 import { UserSessionAdapter } from '@/auth-lib/infrastructure/adapter/login';
@@ -19,14 +24,23 @@ import { GetSuppliersByBusinessUseCase } from '@/purchase-lib/core/usecases/supp
 
 const entities = [SupplierDbEntity, UserSessionDbEntity];
 
-const services = [CreateSupplierService, GetSuppliersByBusinessService];
+const services = [
+  CreateSupplierService,
+  GetSuppliersByBusinessService,
+  GetSupplierByIdService,
+];
 
-const useCases = [CreateSupplierUseCase, GetSuppliersByBusinessUseCase];
+const useCases = [
+  CreateSupplierUseCase,
+  GetSuppliersByBusinessUseCase,
+  GetSupplierByIdUseCase,
+];
 
 const adapters = [
   CreateSupplierAdapter,
   UserSessionAdapter,
   GetSuppliersByBusinessAdapter,
+  GetSupplierByIdAdapter,
 ];
 
 @Module({
