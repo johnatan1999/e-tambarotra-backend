@@ -9,15 +9,18 @@ import {
   CreateSupplierService,
   GetSupplierByIdService,
   GetSuppliersByBusinessService,
+  UpdateSupplierService,
 } from '@/purchase-lib/application/services/supplier';
 import {
   CreateSupplierUseCase,
   GetSupplierByIdUseCase,
+  UpdateSupplierUseCase,
 } from '@/purchase-lib/core/usecases/supplier';
 import {
   CreateSupplierAdapter,
   GetSupplierByIdAdapter,
   GetSuppliersByBusinessAdapter,
+  UpdateSupplierAdapter,
 } from '@/purchase-lib/infrastructure/adapter/supplier';
 import { UserSessionAdapter } from '@/auth-lib/infrastructure/adapter/login';
 import { GetSuppliersByBusinessUseCase } from '@/purchase-lib/core/usecases/supplier/get-suppliers-by-business.usecase';
@@ -28,12 +31,14 @@ const services = [
   CreateSupplierService,
   GetSuppliersByBusinessService,
   GetSupplierByIdService,
+  UpdateSupplierService,
 ];
 
 const useCases = [
   CreateSupplierUseCase,
   GetSuppliersByBusinessUseCase,
   GetSupplierByIdUseCase,
+  UpdateSupplierUseCase,
 ];
 
 const adapters = [
@@ -41,6 +46,7 @@ const adapters = [
   UserSessionAdapter,
   GetSuppliersByBusinessAdapter,
   GetSupplierByIdAdapter,
+  UpdateSupplierAdapter,
 ];
 
 @Module({

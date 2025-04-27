@@ -82,7 +82,7 @@ managing infrastructure.
 ### Services
 
 ```bash
-$ pnpm run gen:services purchase-lib supplier get-supplier-by-id
+$ pnpm run gen:services purchase-lib supplier update-supplier
 ```
 
 ### Entities

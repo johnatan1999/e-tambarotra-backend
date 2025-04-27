@@ -3,26 +3,37 @@ import {
   CREATE_SUPPLIER_SERVICE_INBOUND,
   GET_SUPPLIER_BY_ID_SERVICE_INBOUND,
   GET_SUPPLIERS_BY_BUSINESS_SERVICE_INBOUND,
+  UPDATE_SUPPLIER_SERVICE_INBOUND,
 } from '@/purchase-lib/core/services/inbounds/supplier';
 import {
   CreateSupplierAdapter,
   GetSupplierByIdAdapter,
   GetSuppliersByBusinessAdapter,
+  UpdateSupplierAdapter,
 } from '@/purchase-lib/infrastructure/adapter/supplier';
 import {
   CreateSupplierServiceOutbound,
   GetSupplierByIdServiceOutbound,
   GetSuppliersByBusinessServiceOutbound,
+  UpdateSupplierServiceOutbound,
 } from '@/purchase-lib/core/services/outbounds/supplier';
 import {
   CreateSupplierUseCase,
   GetSupplierByIdUseCase,
+  UpdateSupplierUseCase,
 } from '@/purchase-lib/core/usecases/supplier';
 import { UserSessionAdapter } from '@/auth-lib/infrastructure/adapter/login';
 import { UserSessionServiceOutbound } from '@/auth-lib/core/services/outbounds/login';
 import { GetSuppliersByBusinessUseCase } from '@/purchase-lib/core/usecases/supplier/get-suppliers-by-business.usecase';
 
 export const SupplierProvider: Provider[] = [
+  {
+    provide: UPDATE_SUPPLIER_SERVICE_INBOUND,
+    inject: [UpdateSupplierAdapter],
+    useFactory(outbound: UpdateSupplierServiceOutbound) {
+      return new UpdateSupplierUseCase(outbound);
+    },
+  },
   {
     provide: GET_SUPPLIER_BY_ID_SERVICE_INBOUND,
     inject: [GetSupplierByIdAdapter],
